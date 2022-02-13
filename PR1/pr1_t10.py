@@ -68,7 +68,19 @@ def test_fast_mul():
 
 
 def main():
-    print(fast_pow(4, 4))
+    a = int(input("Enter first factor: "))
+    b = int(input("Enter second factor: "))
+    print(f"{a} times {b} equals {fast_mul(a, b)}")
+    print()
+
+    a = int(input("Enter base number: "))
+    b = int(input("Enter exponent (power): "))
+    print(f"{a} to the power of {b} equals {fast_pow(a, b)}")
+    print()
+
+    input("Enter anything to test fast_mul: ")
+    print("--- Automatic testing of fast_mul function ---")
+    test_fast_mul()
 
 
 if __name__ == '__main__':

@@ -35,11 +35,11 @@ def mp29(x):
 
 
 def main():
-    x = int(input("Enter x: "))
-    print(mp12(x))
-    print(mp16(x))
-    print(mp15(x))
-    print(mp29(x))
+    x = int(input("Enter number to multiply: "))
+    print(f"{x} times 12 equals {mp12(x)}")
+    print(f"{x} times 16 equals {mp16(x)}")
+    print(f"{x} times 15 equals {mp15(x)}")
+    print(f"{x} times 29 equals {mp29(x)}")
 
 
 if __name__ == '__main__':

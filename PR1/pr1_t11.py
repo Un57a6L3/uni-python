@@ -27,7 +27,9 @@ def fast_mul_gen_full(y):
 
 
 def main():
-    x = int(input("Enter x: "))
+    x = int(input("Enter factor for function generation: "))
+    print("--- Here is the full function definition and its call ---")
+    print()
     fast_mul_gen_full(x)
 
 
