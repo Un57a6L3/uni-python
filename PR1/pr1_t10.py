@@ -1,3 +1,4 @@
+# Multiplies a and b with the "peasant method"
 def fast_mul(a, b):
     res = 0
     while a > 1:
@@ -10,6 +11,7 @@ def fast_mul(a, b):
     return res
 
 
+# Power function that uses fast_mul
 def fast_pow(number, power):
     res = number
     for i in range(power - 1):
@@ -47,6 +49,7 @@ def fast_mul_debug(a, b):
     return res
 
 
+# Function for automatically testing fast_mul
 def test_fast_mul():
     from random import randrange
     passed = True

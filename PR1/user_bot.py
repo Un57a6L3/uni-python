@@ -1,7 +1,7 @@
 ﻿import collections
 
 
-# C-like struct but not quite
+# Data structure for use in BFS function
 class Point:
     def __init__(self, x, y, dir):
         self.x = x
@@ -9,7 +9,7 @@ class Point:
         self.dir = dir
 
 
-# breadth first search for gold
+# Breadth-First Search implementation for tile grid
 def bfs(check, x, y):
     # set for storing visited tiles
     visited = set()
@@ -36,7 +36,7 @@ def bfs(check, x, y):
         if check("gold", p.x, p.y):
             return p.dir
 
-        # adding unvisited neighboring tiles
+        # adding unvisited adjacent tiles to queue
         if f"{p.x + 1}, {p.y}" not in visited:
             q.append(Point(p.x + 1, p.y, p.dir))
         if f"{p.x - 1}, {p.y}" not in visited:
@@ -48,7 +48,6 @@ def bfs(check, x, y):
     return "pass"
 
 
-# stuff that runs each tick
 def script(check, x, y):
     if check("gold", x, y):
         return "take"
