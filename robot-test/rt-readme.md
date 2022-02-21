@@ -1,7 +1,12 @@
 # Robot test tasks
 This folder contains my codes for automatically generated tasks by the
 [kispython robot](http://kispython.ru).
-My tasks were as follows:
+My tasks can be found down below.
+
+**Note:** the formulas may take a short time to render,
+you might have to refresh the page.
+Unfortunately, they don't work well on dark theme,
+but you can open them in separate tabs and they'll look fine.
 
 ### Task 1
 Implement the function below:
