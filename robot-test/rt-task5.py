@@ -11,7 +11,6 @@ def main(z):
 
 # cut this out when submitting to robot
 if __name__ == "__main__":
-    n = int(input("Enter vector length: "))
     z = list(map(float, input("Enter vector: ").split()))
     f = main(z)
     print(f"{f:.2e}")
