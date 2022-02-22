@@ -1,58 +1,48 @@
-def oneliners():
-    s = list()
-    s.append("65")
-    s.append("76")
-    s.append("354")
-    s.append("76")
-
-    # task1 - cast elements in s from string to integer
-    s = list(map(int, s))
-    print(s)
-
-    # task2 - count unique elements in s
-    result = len(set(s))
-    print(result)
-
-    # task3 - reverse s without functions
-    result = s[::-1]
-    print(result)
-
-    # task4 - make list of indexes of occurrences of x in list s
-    x = 76  # key
-    result = [i for i in range(len(s)) if s[i] == x]
-    print(result)
-
-    # task5 - sum elements in s with even indexes
-    result = sum(s[::2])
-    print(result)
-
-    s = ["sample", "text", "lol", "lorem", "ipsum"]
-
-    # task6 - find the longest string in s
-    # might not be the most optimal solution, but I'm yet to find one
-    result = s[[len(s[i]) for i in range(len(s))].index((max([len(s[i]) for i in range(len(s))])))]
-    print(result)
+# 1: Cast elements in s from string to integer
+def subtask1(s):
+    return list(map(int, s))
 
 
-# idk how to solve this yet
-def str_select():
-    i = 0
+# 2: Count unique elements in s
+def subtask2(s):
+    return len(set(s))
 
-    # original
-    result = ['much','code','wow'][i]
-    print(result)
 
-    # my solution ??????
-    i *= 4
-    result = 'muchcodewow'[i]
-    print(result)
-    # 0 - 0:4
-    # 1 - 4:8
-    # 2 - 8:11
+# 3: Reverse s without functions
+def subtask3(s):
+    return s[::-1]
+
+
+# 4: Make list of indexes of occurrences of x in list s
+def subtask4(s, x):
+    return [i for i in range(len(s)) if s[i] == x]
+
+
+# 5: Sum elements in s with even indexes
+def subtask5(s):
+    return sum(s[::2])
+
+
+# 6: Find the longest string in s
+# Oh god this is utterly ridiculous
+# Who the hell endorses such codestyle?
+def subtask6(s):
+    return s[[len(s[i]) for i in range(len(s))].index((max([len(s[i]) for i in range(len(s))])))]
 
 
 def main():
-    oneliners()
+    s = list(input("Enter number list: ").split())
+    print(f'Before cast: {s}')
+    s = subtask1(s)
+    print(f'After cast: {s}')
+    print(f'List s has {subtask2(s)} unique elements')
+    print(f'Reversed list s: {subtask3(s)}')
+    x = int(input('Enter number to find in list s: '))
+    print(f'{x} occurs in list s at indexes {subtask4(s, x)}')
+    print(f'The sum of elements in list s at even indexes equals {subtask5(s)}')
+    s = list(input("Enter string list: ").split())
+    print(f'List s now is: {s}')
+    print(f'The longest string in list s is {subtask6(s)}')
 
 
 if __name__ == '__main__':

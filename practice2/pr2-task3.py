@@ -1,3 +1,5 @@
+# Function that generates the student groups list
+# They must be identical to list on kispython.ru
 def generate_groups():
     # setting data list
     year = 20

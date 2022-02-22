@@ -1,7 +1,10 @@
 from random import randrange
 
 
+# Function that generates random reports on digital economics
 def generate_report():
+    # sentence parts pool taken from table in practice .ipynb
+    # could as well put it into a json but meh
     data = [
         [
             "Коллеги,",
@@ -60,17 +63,22 @@ def generate_report():
             "внезапных открытий."
         ]
     ]
+
     sentences = list()
+
+    # generating random sentences
     for i in range(9):
         sentence = ""
         for j in range(5):
+            # so that first sentence is a proper opener phrase
             if i == 8:
                 k = 0
             else:
-                k = randrange(8)
+                k = randrange(1, 8)
             sentence += data[k][j] + " "
         sentences.append(sentence)
 
+    # printing the generated report
     for i in range(3):
         print(f"{sentences.pop()}{sentences.pop()}{sentences.pop()}")
 
