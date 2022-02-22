@@ -6,7 +6,7 @@ def parse_subj(text):
     text = str.lower(text)
 
     # detecting group name substring
-    str_gr = ''
+    str_gr = '\n'
     if 'ivbo' in text:
         str_gr = 'ivbo'
     elif 'ивбо' in text:
@@ -29,7 +29,7 @@ def parse_subj(text):
     text.replace(str_gr, '#' * len(str_gr))
 
     # detecting variant substring
-    str_var = ''
+    str_var = '\n'
     if 'variant' in text:
         str_var = 'variant'
     elif 'вариант' in text:
@@ -67,7 +67,7 @@ def parse_subj(text):
     variant = ''
 
     # assigning integers depending on substring order
-    if ind_gr < ind_var:
+    if ind_gr < ind_var or ind_var == -1:
         if len(nums) == 2:
             number = nums[0]
             variant = nums[1]

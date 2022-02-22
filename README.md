@@ -1,4 +1,4 @@
-# Un57a6L3/python_uni4
+# Python for university semester 4
 This repository is for my Python codes for various tasks in university.
 So far, they are all tied to the subject **Python programming**.
 
