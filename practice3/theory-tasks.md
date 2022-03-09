@@ -1,23 +1,31 @@
 ### Task 1
-Write code examples that break PEP-8 rules in following ways:
-1. whitespace before '('
-2. missing whitespace around operator
-3. missing whitespace after ','
-4. unexpected spaces around keyword / parameter equals
-5. expected 2 blank lines, found 1
-6. multiple statements on one line (colon)
-7. multiple statements on one line (semicolon)
-8. comparison to None should be 'if cond is None:'
-9. comparison to True should be 'if cond is True:' or 'if cond:'
+Write code examples that correspond to given PEP-8 violations.
 #### Answer:
-```python
-def func(par =5):
-    if par == None:
-        if par == True: par+=1
-    par += 1; return par
+1. whitespace before '('
+   - `foo ()`
+2. missing whitespace around operator
+   - `1+2`
+3. missing whitespace after ','
+   - `[1,2]`
+4. unexpected spaces around keyword / parameter equals
+   - `foo(par = 5)`
+5. expected 2 blank lines, found 1
+   - given in code below 
+6. multiple statements on one line (colon)
+   - `if True: pass`
+7. multiple statements on one line (semicolon)
+   - `foo(); bar()`
+8. comparison to None should be 'if cond is None:'
+   - `if a == None:`
+9. comparison to True should be 'if cond is True:' or 'if cond:'
+   - `if a == True`
 
-def func2():
-    sum ([2,1])
+Here's a four-line piece of code that has one of each violation (would be two lines without #5):
+```python
+def foo (a =(1==True)):
+    if a == None: bar(); return a,5
+
+def bar(): pass
 ```
 
 ### Task 2
