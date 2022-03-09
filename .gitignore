@@ -5,3 +5,5 @@
 main.py
 test.py
 output.*
+*.log
+gen_*.*
