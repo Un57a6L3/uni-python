@@ -114,8 +114,11 @@ Implement procedural generation of 5x5 pixel sprites with Matplotlib and the `im
 #### Answer:
 Code [here](pr3-task07.py).
 Here's an example of generated sprites:
+
 ![sprite example 01](images/example_sprites01.png)
+
 Here's another one, using a different colormap.
+
 ![sprite example 02](images/example_sprites02.png)
 
 ### Task 8
@@ -124,4 +127,5 @@ In this game the entire universe is defined by only three numbers.
 #### Answer:
 Code [here](pr3-task08.py).
 Here's the generated image:
+
 ![galaxy example](images/example_galaxy.png)
