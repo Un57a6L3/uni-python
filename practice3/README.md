@@ -1,3 +1,9 @@
+# Practice 3
+This folder contains my codes for practice 3 tasks of subject *Python programming*.
+The full practice document can be found
+[here](https://github.com/true-grue/kispython).
+Summary of the tasks (and answers) is as follows:
+
 ### Task 1
 Write code examples that correspond to given PEP-8 violations.
 #### Answer:
@@ -86,3 +92,36 @@ print(boo)  # boo
 
 print(bar)  # triggers an exception
 ```
+
+### Task 6
+Write a `run_with_log(func)` function that adds exception info to a log-file.
+The function is not supposed to handle exceptions.
+User function to be run with log is passed as parameter.
+#### Answer:
+Code [here](pr3-task06.py). Here's a log example:
+```
+ERROR:root:log
+Traceback (most recent call last):
+  File "F:\coding-kispython\practice3\pr3-task06.py", line 12, in run_with_log
+    func()
+  File "F:\coding-kispython\practice3\pr3-task06.py", line 5, in foo
+    a = 1 / 0
+ZeroDivisionError: division by zero
+```
+
+### Task 7
+Implement procedural generation of 5x5 pixel sprites with Matplotlib and the `imshow` function. Use symmetry.
+#### Answer:
+Code [here](pr3-task07.py).
+Here's an example of generated sprites:
+![sprite example 01](images/example_sprites01.png)
+Here's another one, using a different colormap.
+![sprite example 02](images/example_sprites02.png)
+
+### Task 8
+Picture the legendary first galaxy from the game Elite (1984) with Matplotlib.
+In this game the entire universe is defined by only three numbers.
+#### Answer:
+Code [here](pr3-task08.py).
+Here's the generated image:
+![galaxy example](images/example_galaxy.png)

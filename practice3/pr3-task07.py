@@ -4,7 +4,6 @@ from secrets import token_hex
 import matplotlib.pyplot as plt
 
 
-# there are 65535 possible sprites
 def make_mx():
     mx = [[choice([0, 1]) for _ in range(3)] for _ in range(5)]
     for i in mx:
