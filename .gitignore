@@ -1,10 +1,18 @@
+# Directories
 **/.idea
 **/__pycache__
 **/codepastes
 **/graphs
+
+# Specific files
 main.py
 test.py
-output.*
+
+# Extensions
 *.log
+*.zip
+
+# Filenames
+output.*
 gen_*.*
 !example*.*
