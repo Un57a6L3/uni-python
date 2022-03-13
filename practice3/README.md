@@ -1,13 +1,10 @@
 # Practice 3
 This folder contains my codes for practice 3 tasks of subject *Python programming*.
 The full practice document can be found [here][kp-rep].
-Summary of the tasks (and answers) is as follows:
+Tasks 1-4 are theory questions, the rest are practical tasks.
 
 ---
-# Theory tasks
-
----
-## Task 1 (theory)
+## Task 1
 > Write code examples that correspond to given PEP-8 violations.
 
 Here's a table of examples for each violation:
@@ -34,8 +31,7 @@ def foo (a =(1==True)):
 def bar(): pass
 ```
 
----
-## Task 2 (theory)
+## Task 2
 > Do modules load once or with every import statement? Prove your answer with code.
 
 Modules load once. The code listed below proves that -
@@ -49,18 +45,15 @@ import test
 import test
 import test
 ```
-
 Output: `test.py loaded successfully`.
 
----
-## Task 3 (theory)
+## Task 3
 > Say, we want to change the value of a module's global variable for all users of the module.
 What will the code below lead to? What can be done instead?
 > ```python
 > from some_module import GLOBAL_VAR
 > GLOBAL_VAR = 42
 > ```
-
 In the case above, instead of changing the value, `GLOBAL_VAR` will be redeclared.
 Here's what can be done instead:
 ```python
@@ -68,8 +61,7 @@ import some_module
 some_module.GLOBAL_VAR = 42
 ```
 
----
-## Task 4 (theory)
+## Task 4
 > Try to make import with `*` controlled from the module,
 so it would lead to importing only a certain list of names in the module.
 
@@ -91,10 +83,7 @@ print(bar)  # triggers an exception
 ```
 
 ---
-# Practice Tasks
-
----
-## Task 6
+## Task 6 (logging)
 > Write a `run_with_log(func)` function that adds exception info to a log-file.
 The function is not supposed to handle exceptions. User function is passed as parameter.
 
@@ -111,8 +100,7 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ```
 
----
-## Task 7
+## Task 7 (sprites)
 > Implement procedural generation of 5x5 pixel sprites with Matplotlib and the `imshow()` function.
 Take advantage of symmetry.
 
@@ -132,8 +120,7 @@ The more difficult part of generating colored sprites is that the color only dep
 the value and the colormap, so you can't just selectively render pixels in shapes.
 What you can do though is change the colormap, albeit not that easily.
 The function down below adds a bit of white to the bottom of the colormap.
-It does so with some typecasting back and forth, there's no easier way that I'm aware of. 
-
+It does so with some typecasting back and forth, there's no easier way that I'm aware of.
 ```python
 def add_white(colormap):
     white = plt.cm.binary(0)                  # doesn't conflict with vstack
@@ -150,8 +137,7 @@ Here's a couple examples of generated sprites:
 ![sprite example 01](images/example_sprites_binary.png)
 ![sprite example 02](images/example_sprites_viridis.png)
 
----
-## Task 8
+## Task 8 (galaxy)
 > Picture the legendary first galaxy from the game Elite (1984) with Matplotlib.
 
 Elite has 8 galaxies with 256 planets each, and it ran on systems with just 32 KB of RAM!
