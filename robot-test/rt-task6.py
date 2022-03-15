@@ -1,40 +1,35 @@
+def choicex2(cond, x):
+    if cond == 2015:
+        return x
+    elif cond == 2019:
+        return x + 1
+    return x + 2
+
+
+def choicex3(cond, x):
+    if cond == 'XSLT':
+        return x
+    return x + 1
+
+
 def main(x):
     if x[0] == 'ORG':
         if x[1] == 1967:
             if x[4] == 'CHUCK':
-                if x[2] == 2015:
-                    return 0
-                elif x[2] == 2019:
-                    return 1
-                elif x[2] == 2008:
-                    return 2
+                return choicex2(x[2], 0)
             elif x[4] == 'CUDA':
                 return 3
-            elif x[4] == 'RDOC':
-                if x[3] == 'XSLT':
-                    return 4
-                elif x[3] == 'RED':
-                    return 5
+            return choicex3(x[3], 4)
         elif x[1] == 1996:
             if x[4] == 'CHUCK':
-                if x[3] == 'XSLT':
-                    return 6
-                elif x[3] == 'RED':
-                    return 7
+                return choicex3(x[3], 6)
             elif x[4] == 'CUDA':
-                if x[2] == 2015:
-                    return 8
-                elif x[2] == 2019:
-                    return 9
-                elif x[2] == 2008:
-                    return 10
-            elif x[4] == 'RDOC':
-                return 11
-    elif x[0] == 'PHP':
-        return 12
-    return -1
+                return choicex2(x[2], 8)
+            return 11
+    return 12
 
 
+# cut this out when submitting to robot
 if __name__ == '__main__':
     x = ['PHP', 1996, 2019, 'RED', 'CHUCK']
     y = ['ORG', 1967, 2008, 'XSLT', 'CHUCK']
