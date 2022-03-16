@@ -170,9 +170,53 @@ You can find the code [here][t08]. Here's the generated image of the galaxy:
 
 ![galaxy example](images/example_galaxy.png)
 
+## Task 11
+> Analyze the [database][games-db] of old computer games.
+> With plots, answer these questions:
+> 1. What years were the most popular in terms of game releases?
+> 2. What genres were popular at different periods of time?
+
+Before we can plot the data, we need to parse it. I form a data dictionary for both of the questions:
+- Games per year: `{year: number}`
+- Games per year per genre: `{genre: {year: number}}`
+
+Here's the parse function:
+```python
+def parse_data():
+    # ... initialisation (dictionaries: years = {...}, genres = {}) 
+    with open('games.csv', encoding='utf8') as file:
+        for line in file:
+            data = [x.strip('\"') for x in line.replace('\n', '').split(';')]
+            name, genre, link, year = data
+            # ... increment years[year] with checks
+            # ... if first entry of genre, initialise genres[genre] = {...}
+            # ... else increment genres[genre][year] with checks
+    return years, genres
+```
+
+All that's left is to plot the data with `bar()` and `plot()`:
+```python
+# first plot
+plt.bar(years.keys(), years.values())
+
+# second plot
+for genre in genres:
+    plt.plot(genres[genre].keys(), genres[genre].values(), label=genre)
+```
+
+So, down below are the plots that we got. Let's give our answers:
+1. The number of releases started growing in 1987, held high in 1989-1996, peaked in 1994,
+and started to decline in 1997.
+2. The absolute most popular genre was Arcade. In 1989-1994 Puzzle games were very popular.
+Since 1994 Action games became popular and remain so.
+
+![years plot](images/plot_years.png)
+![genres plot](images/plot_genres.png)
+
 [t06]: pr3-task06.py
 [t07]: pr3-task07.py
 [t08]: pr3-task08.py
+[games-db]: games.csv
 
 [kp-rep]: https://github.com/true-grue/kispython
 [elite-info]: http://blog.rabidgremlin.com/2015/01/14/procedural-content-generation-creating-a-universe/
