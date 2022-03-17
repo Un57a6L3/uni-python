@@ -194,10 +194,16 @@ def parse_data():
     return years, genres
 ```
 
-All that's left is to plot the data with `bar()` and `plot()`:
+All that's left is to plot the data with `bar()` and `plot()`.
+Also, for the second plot we need to use a color cycle that has at least 15 colors
+(as there are 15 genres on our plot). We can use the `tab20` colormap for that.
 ```python
 # first plot
 plt.bar(years.keys(), years.values())
+
+# color cycle for secont plot
+colors = plt.cycler("color", plt.cm.tab20.colors)
+plt.rcParams["axes.prop_cycle"] = colors
 
 # second plot
 for genre in genres:
@@ -207,8 +213,9 @@ for genre in genres:
 So, down below are the plots that we got. Let's give our answers:
 1. The number of releases started growing in 1987, held high in 1989-1996, peaked in 1994,
 and started to decline in 1997.
-2. The absolute most popular genre was Arcade. In 1989-1994 Puzzle games were very popular.
-Since 1994 Action games became popular and remain so.
+2. The absolute most popular genre was Arcade. Puzzle games were popular in 1989-1994.
+Strategy games were popular in 1989-1997. Action games have been popular since 1994.
+RPG, Quest and Sports genres also stayed mildly popular throughout 1986-1998.
 
 ![years plot](images/plot_years.png)
 ![genres plot](images/plot_genres.png)

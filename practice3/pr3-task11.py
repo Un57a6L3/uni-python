@@ -18,9 +18,8 @@ def parse_data():
             # number of games each year per genre
             if genres.get(genre) is None:
                 genres[genre] = {str(x): 0 for x in range(1981, 2005)}
-            else:
-                if genres[genre].get(year) is not None:
-                    genres[genre][year] += 1
+            if genres[genre].get(year) is not None:
+                genres[genre][year] += 1
 
     return years, genres
 
@@ -43,7 +42,15 @@ def main():
     plt.savefig('images/plot_years', bbox_inches='tight')
     plt.close()
 
+    # colors from continuous colormaps
+    # N = 16
+    # colors = plt.cycler("color", plt.cm.viridis([i/(N-1) for i in range(N)]))
+
+    # colors from discrete colormaps
+    colors = plt.cycler("color", plt.cm.tab20.colors)
+
     # genres plot settings
+    plt.rcParams["axes.prop_cycle"] = colors
     plt.figure(figsize=(16, 4.8))
     plt.grid(axis='x', linestyle='--')
     plt.title("Popularity of genres", fontdict=font1)
