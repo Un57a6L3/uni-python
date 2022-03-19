@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import matplotlib as mpl
+import matplotlib
 
 seed = [0x5A4A, 0x0248, 0xB753]
 pairs = '..LEXEGEZACEBISO' \
@@ -17,6 +17,7 @@ def tweakseed():
     seed[0] = seed[1]
     seed[1] = seed[2]
     seed[2] = temp
+    return 2 * ((seed[1] >> 8) & 31)
 
 
 def makesystem():
@@ -25,32 +26,19 @@ def makesystem():
     x_coord = seed[1] >> 8
     y_coord = 255 - seed[0] >> 8
 
-    pair1 = 2 * ((seed[2] >> 8) & 31)
-    tweakseed()
-    pair2 = 2 * ((seed[2] >> 8) & 31)
-    tweakseed()
-    pair3 = 2 * ((seed[2] >> 8) & 31)
-    tweakseed()
-    pair4 = 2 * ((seed[2] >> 8) & 31)
-    tweakseed()
-
-    name.append(pairs[pair1])
-    name.append(pairs[pair1 + 1])
-    name.append(pairs[pair2])
-    name.append(pairs[pair2 + 1])
-    name.append(pairs[pair3])
-    name.append(pairs[pair3 + 1])
-
-    if longnameflag:
-        name.append(pairs[pair4])
-        name.append(pairs[pair4 + 1])
+    pairsnum = [tweakseed() for _ in range(4)]
+    if not longnameflag:
+        pairsnum.pop()
+    for i in pairsnum:
+        name.append(pairs[i])
+        name.append(pairs[i + 1])
 
     name = ''.join([ch for ch in name if ch != '.'])
     return x_coord, y_coord, name
 
 
 def main():
-    mpl.style.use('dark_background')
+    matplotlib.style.use('dark_background')
     plt.figure(figsize=(24, 12))
     for i in range(256):
         tx, ty, tn = makesystem()
