@@ -3,8 +3,23 @@ This folder contains my codes for automatically generated tasks by the
 [kispython robot][robot]. My tasks can be found down below.
 
 ## Tasks 1-5
-The first five tasks were probably for the sake of testing the robot and very similar.
-Each of the tasks was to implement a mathematical function.
+Each of the first five tasks are to implement a mathematical function.
+They are pretty easy, but there are some things to remember:
+
+There are floor and ceiling operations in these functions, which may be
+new to you. They look like this: ⌊x⌋ - floor, ⌈x⌉ - ceiling.
+In Python, they are `math.floor()` and `math.ceil()`.
+
+In the fifth task, the function operates vectors (lists),
+and their lengths. In the mathematical notation the indexes start at 1.
+In the program, obviously, they start from 0, so you'll have to make
+some small adjustments to avoid IndexError exceptions.
+
+Keep in mind you have to follow PEP-8, so keep two lines
+between functions, have a newline at end of program,
+make sure no lines are longer than 80 characters,
+split formulas to several lines if needed.
+
 Links to the tasks: [T1][t01], [T2][t02], [T3][t03], [T4][t04], [T5][t05].
 
 The functions themselves were listed here previously, but they took too much space,
@@ -24,8 +39,12 @@ Unfortunately, they don't work well on dark theme, but you can open them in sepa
 -->
 
 ## Task 6
-The task was to implement a solution tree function. Quite boring, just like the first five.
-I won't list the tree here for pretty much the same reasons. Code [here][t06].
+The task is to implement a solution tree function.
+Sounds easy, but you need to avoid cyclomatic complexity.
+That means the less if-else branches - the better.
+Remove the last else statements and just leave the returns.
+If there are multiples of the same choice - make it a function.
+You can look at my example of code [here][t06].
 
 ## Task 7
 Now we're onto something interesting. The task is to implement a function for bit field transformation.
@@ -66,8 +85,8 @@ def main(num):
 ```
 
 ## Task 8
-Now this one was actually challenging. The task is to implement a function for parsing a string with data.
-The result has to be returned as a dictionary. Examples of data format down below:
+This task is to implement a function for parsing a string with data of a weird format.
+The result has to be returned as a dictionary. Example of data format down below (my variant):
 ```
 Input:
 <block> <data> declare #1474|> `edce. </data>.<data>declare#-4186
@@ -76,20 +95,13 @@ Input:
 
 Output:
 {'edce': 1474, 'riquer': -4186, 'diquon_733': 3755, 'bela': -4726}
-
-Input:
-<block> <data>declare #-5498|> `edus. </data>. <data>declare #-1339
-|>`ontila. </data>. <data>declare#-9597 |> `recela_196. </data>.
-<data> declare #-2563 |> `raoner_884.</data>. </block>
-
-Output:
-{'edus': -5498, 'ontila': -1339, 'recela_196': -9597, 'raoner_884': -2563}
 ```
 
 The way to solve this task is by using regular expressions (module `re`).
 All we need to do is to parse the data into a list with `re.findall()` and put it into a dictionary.
 The difficult part is to actually find a regular expression that works. Regex is not easy - you'll see why.
-So, here's the [code][t08] - it can actually be written in one line, but that would look horrifying:
+In this example we have a pattern like: ```#value |> `key.```. We need a regular expression that would
+find such patterns - you can find it in the [code][t08] or right below.
 ```python
 def main(s):
     pattern = r"#(.*?) *\|> *`(.*?)\.+"                  # black magic sorcery (regex)

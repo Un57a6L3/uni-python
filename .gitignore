@@ -3,6 +3,8 @@
 **/__pycache__
 **/codepastes
 **/graphs
+**/gen
+**/hlp_*
 
 # Specific files
 main.py

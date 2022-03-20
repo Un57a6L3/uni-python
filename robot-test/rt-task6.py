@@ -31,7 +31,7 @@ def main(x):
 
 # cut this out when submitting to robot
 if __name__ == '__main__':
-    x = ['PHP', 1996, 2019, 'RED', 'CHUCK']
-    y = ['ORG', 1967, 2008, 'XSLT', 'CHUCK']
-    print(main(x))
-    print(main(y))
+    X = ['PHP', 1996, 2019, 'RED', 'CHUCK']
+    Y = ['ORG', 1967, 2008, 'XSLT', 'CHUCK']
+    print(main(X))
+    print(main(Y))

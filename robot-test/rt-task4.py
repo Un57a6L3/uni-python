@@ -2,8 +2,8 @@ def f(n):
     if not n:
         return 0.28
     elif n >= 1:
-        prev = f(n-1)
-        return prev**2 / 32 + 0.04 + prev
+        prev = f(n - 1)
+        return prev ** 2 / 32 + 0.04 + prev
 
 
 def main(n):

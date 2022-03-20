@@ -21,7 +21,5 @@ def convert():
 
 if __name__ == '__main__':
     # convert()
-    res = main(0xb163e58f)
-    print(f'0x{res:08x}')
-    res = main(0x29daf9f4)
-    print(f'0x{res:08x}')
+    print(f'0x{main(0xb163e58f):08x}')
+    print(f'0x{main(0x29daf9f4):08x}')
