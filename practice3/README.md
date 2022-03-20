@@ -16,16 +16,16 @@ Table of Contents:
 
 Here's a table of examples for each violation:
 
-| PEP-8                                                           |      Code       |
-| --------------------------------------------------------------- | :-------------: |
-| `whitespace before '('                                        ` |    `foo ()`     |
-| `missing whitespace around operator                           ` |      `1>2`      |
-| `missing whitespace after ','                                 ` |     `[1,2]`     |
-| `unexpected spaces around keyword / parameter equals          ` | `foo(par = 5)`  |
-| `multiple statements on one line (colon)                      ` | `if True: pass` |
-| `multiple statements on one line (semicolon)                  ` | `foo(); bar()`  |
-| `comparison to None should be 'if cond is None:'              ` | `if a == None:` |
-| `comparison to True should be 'if cond is True:' or 'if cond:'` | `if a == True:` |
+| PEP-8                                                         |      Code       |
+| ------------------------------------------------------------- | :-------------: |
+| whitespace before '('                                         |    `foo ()`     |
+| missing whitespace around operator                            |      `1>2`      |
+| missing whitespace after ','                                  |     `[1,2]`     |
+| unexpected spaces around keyword / parameter equals           | `foo(par = 5)`  |
+| multiple statements on one line (colon)                       | `if True: pass` |
+| multiple statements on one line (semicolon)                   | `foo(); bar()`  |
+| comparison to None should be 'if cond is None:'               | `if a == None:` |
+| comparison to True should be 'if cond is True:' or 'if cond:' | `if a == True:` |
 
 There's also a violation I could not put into the table due to how Markdown formatting works:
 `expected 2 blank lines, found 1` - I think it's an obvious one.
