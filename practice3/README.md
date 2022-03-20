@@ -1,16 +1,23 @@
-# Practice 3
+# Python Practice 3
 This folder contains my codes for practice 3 tasks of subject *Python programming*.
 The full practice document can be found [here][kp-rep].
-Tasks 1-4 are theory questions, the rest are practical tasks.
+
+Table of Contents:
+- [Python Practice 3](#python-practice-3)
+  - [Task 1 (PEP-8 rules)](#task-1-pep-8-rules)
+  - [Task 6 (error logging)](#task-6-error-logging)
+  - [Task 7 (sprite generation)](#task-7-sprite-generation)
+  - [Task 8 (galaxy generation)](#task-8-galaxy-generation)
+  - [Task 11 (games database)](#task-11-games-database)
 
 ---
-## Task 1
+## Task 1 (PEP-8 rules)
 > Write code examples that correspond to given PEP-8 violations.
 
 Here's a table of examples for each violation:
 
 | PEP-8                                                           |      Code       |
-|-----------------------------------------------------------------|:---------------:|
+| --------------------------------------------------------------- | :-------------: |
 | `whitespace before '('                                        ` |    `foo ()`     |
 | `missing whitespace around operator                           ` |      `1>2`      |
 | `missing whitespace after ','                                 ` |     `[1,2]`     |
@@ -31,59 +38,8 @@ def foo (a =(1==True)):
 def bar(): pass
 ```
 
-## Task 2
-> Do modules load once or with every import statement? Prove your answer with code.
-
-Modules load once. The code listed below proves that -
-for several import statements the module code is executed only once.
-```python
-# File test.py:
-print('test.py loaded successfully')
-
-# File main.py:
-import test
-import test
-import test
-```
-Output: `test.py loaded successfully`.
-
-## Task 3
-> Say, we want to change the value of a module's global variable for all users of the module.
-What will the code below lead to? What can be done instead?
-> ```python
-> from some_module import GLOBAL_VAR
-> GLOBAL_VAR = 42
-> ```
-In the case above, instead of changing the value, `GLOBAL_VAR` will be redeclared.
-Here's what can be done instead:
-```python
-import some_module
-some_module.GLOBAL_VAR = 42
-```
-
-## Task 4
-> Try to make import with `*` controlled from the module,
-so it would lead to importing only a certain list of names in the module.
-
-This can be done by using `__all__`.  It is a list of strings defining what symbols
-in a module will be exported when `from <module> import *` is used on the module.
-The following code in `test.py` explicitly exports the symbols `foo` and `boo`:
-```python
-__all__ = ['foo', 'boo']
-foo = 5
-bar = 10
-def boo(): return 'boo'
-```
-These symbols can be imported like so:
-```python
-from test import *
-print(foo)  # 5
-print(boo)  # boo
-print(bar)  # triggers an exception
-```
-
 ---
-## Task 6 (logging)
+## Task 6 (error logging)
 > Write a `run_with_log(func)` function that adds exception info to a log-file.
 The function is not supposed to handle exceptions. User function is passed as parameter.
 
@@ -125,7 +81,7 @@ Traceback (most recent call last):
 TypeError: can only concatenate str (not "int") to str
 ```
 
-## Task 7 (sprites)
+## Task 7 (sprite generation)
 > Implement procedural generation of 5x5 pixel sprites with Matplotlib and the `imshow()` function.
 Take advantage of symmetry.
 
@@ -162,7 +118,7 @@ Here's a couple examples of generated sprites:
 ![sprite example 01](images/example_sprites_binary.png)
 ![sprite example 02](images/example_sprites_viridis.png)
 
-## Task 8 (galaxy)
+## Task 8 (galaxy generation)
 > Picture the legendary first galaxy from the game Elite (1984) with Matplotlib.
 
 Elite has 8 galaxies with 256 planets each, and it ran on systems with just 32 KB of RAM!
@@ -195,7 +151,7 @@ You can find the code [here][t08]. Here's the generated image of the galaxy:
 
 ![galaxy example](images/example_galaxy.png)
 
-## Task 11
+## Task 11 (games database)
 > Analyze the [database][games-db] of old computer games.
 > With plots, answer these questions:
 > 1. What years were the most popular in terms of game releases?
