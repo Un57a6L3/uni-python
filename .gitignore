@@ -5,6 +5,7 @@
 **/graphs
 **/gen
 **/hlp_*
+**/.files
 
 # Specific files
 main.py

@@ -7,7 +7,7 @@ tree = graphviz.Digraph()
 # THESE ARE CONFIGURABLE OPTIONS
 
 # files and directories in this list will be ignored
-IGNORE = {'.git', '.idea', '__pycache__', 'graphs'}
+IGNORE = {'.git', '.idea', '.files', '__pycache__', 'graphs'}
 
 # this directory will be the root for graph and search
 ROOT_PATH = f'F:{SLASH}coding-kispython{SLASH}'
