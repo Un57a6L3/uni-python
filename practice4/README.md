@@ -4,14 +4,14 @@ The full practice document can be found [here][kp-rep].
 
 Table of Contents:
 - [Python Practice 4](#python-practice-4)
-  - [Task ? (Hash table)](#task--hash-table)
+  - [Task 1 (Hash table)](#task-1-hash-table)
     - [Description](#description)
     - [Classes](#classes)
     - [Methods](#methods)
     - [Testing](#testing)
 
 ---
-## Task ? (Hash table)
+## Task 1 (Hash table)
 > (EN) Implement a hash table data structure, an analogue of built-in `dict`. Use the function `hash`. Do testing on random data using `assert` and `dict`.
 > 1. Implement methods for reading, writing, getting the size of the hash table.
 > 2. Make the above mentioned methods standard operators/functions, as in `dict`.
@@ -108,22 +108,17 @@ def __next__(self):
 >>> a = MyDict()
 >>> print(a)
 {}
-
 >>> a[4] = 'foo'
 >>> a[4]
 'foo'
-
 >>> a['bar'] = 7
 >>> a['bar']
 7
-
 >>> print(a)
 {'bar': 7, 4: 'foo'}
-
 >>> a['sampletext'] = 5, 7, 3, 'wow'
 >>> a['sampletext']                 
 (5, 7, 3, 'wow')
-
 >>> print(a)
 {'bar': 7, 4: 'foo', 'sampletext': (5, 7, 3, 'wow')}
 ```
@@ -132,7 +127,6 @@ Here's a comparison with Python's in-built `dict`:
 ```pycon
 >>> # fill hash table and dict with elements
 >>> from hash import MyDict
->>> a = MyDict
 >>> a = MyDict()
 >>> b = dict()
 >>> for i in range(5): 
@@ -159,3 +153,5 @@ TypeError: cannot unpack non-iterable int object
 ```
 
 [hash-table]: hash.py
+
+[kp-rep]: https://github.com/true-grue/kispython
