@@ -3,7 +3,9 @@ import string
 
 
 class Node:
-    '''Structure for a single key-value pair.'''
+    '''
+    Structure for a single key-value pair.
+    '''
 
     def __init__(self, key, value):
         self.key = key
@@ -80,6 +82,12 @@ class MyDict:
                 pairs.append(f"{k}: {v}")
                 node = node.next
         return f"\u007b{', '.join(pairs)}\u007d"
+
+    def __repr__(self):
+        '''
+        Overload of __repr__() method.
+        '''
+        return self.__str__()
 
     def __len__(self):
         '''

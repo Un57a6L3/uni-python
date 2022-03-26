@@ -4,14 +4,17 @@ The full practice document can be found [here][kp-rep].
 
 Table of Contents:
 - [Python Practice 4](#python-practice-4)
-  - [Task 1 (Hash table)](#task-1-hash-table)
+  - [Task 1 (Hash table) *// not in variant*](#task-1-hash-table--not-in-variant)
     - [Description](#description)
     - [Classes](#classes)
-    - [Methods](#methods)
+    - [Basic methods](#basic-methods)
+    - [Operators](#operators)
+    - [Iteration](#iteration)
+    - [Rehashing](#rehashing)
     - [Testing](#testing)
 
 ---
-## Task 1 (Hash table)
+## Task 1 (Hash table) *// not in variant*
 > (EN) Implement a hash table data structure, an analogue of built-in `dict`. Use the function `hash`. Do testing on random data using `assert` and `dict`.
 > 1. Implement methods for reading, writing, getting the size of the hash table.
 > 2. Make the above mentioned methods standard operators/functions, as in `dict`.
@@ -25,7 +28,7 @@ Table of Contents:
 ### Description
 So, how does a hash table work? Every key is passed through a hash function, the output hash being the index of the so-called **bucket** where the key-value pair is stored. However, a hash function may output the same hash for different inputs. That is called a **collision**. If a collision occurs, we'll make a linked list at the index and append the new pair.
 
-The downside is that having linked lists instead of single elements raises the complexity from O(1) to O(n). So, when the table becomes full enough, we need to increase its capacity and readd the elements, because the indexes will now differ. That process is called **rehashing**. It should be done when about 3/4 of the buckets are occupied.
+You can find the full code [here][hash-table].
 
 ### Classes
 For the key-value pairs we'll make a `Node` data structure:
@@ -48,58 +51,32 @@ class MyDict:
         self.__buckets = [None] * self.capacity
 ```
 
-### Methods
-In the class `MyDict` we will need to overload the following methods:
-- Writing method `__setitem__()`: implements `obj[key] = value`
-- Reading method `__getitem__()`: implements `obj[key]`
-- Iterating methods `__iter__()` and `__next__()`
-- Length method `__len__()` used by `len()` function
-- String method `__str__()` used by `str()` function
+### Basic methods
+For subtask 1 we need to implement writing and reading methods, and a size method.
 
-You can find the actual code [here][hash-table].
+To write an element pair into the table, we first need to get the hash of the key. It can be done like this: `hash(key) % self.capacity`. Now we check the bucket with the calculated index. If it is empty, put the element there. If is occupied, iterate it and put the element at the end.
 
-Down below are pseudocodes for some of these methods (and rehashing)
-```pseudocode setitem
-def __setitem__(self, key, value):
-    get index with hash function
-    increment size (number of elements)
+To read an element by key, we need to get its hash and iterate the corresponding bucket. If an element with the given key is found, return it. If not, return `None`.
 
-    if bucket empty:
-        increment number of taken buckets
-        put node in bucket, return
-        
-    if bucket not empty (collision):
-        iterate bucket, put node at end
-```
-```pseudocode __getitem__
-def __getitem__(self, key):
-    get index with hash function
-    iterate bucket in search of key
-    if key is found: return value
-    else: return None
-```
-```pseudocode rehash
-def rehash(self):
-    check if table need rehashing (3/4 buckets taken)
-    create new set of buckets and counters
-    iterate through all elements, add them to new set of bucket
-    reassign the new set of buckets and counters to object fields
-```
-```pseudocode __iter__
-def __iter__(self):
-    set index to 0
-    set node to first node of first bucket (may be None)
-    return self
-```
-```pseudocode __next__
-def __next__(self):
-   if node is None:
-       find next filled bucket
-       get its first node
-   get key and value of node
-   set node to next node of bucket (may be None)
-   return key and value
-```
+Getting the table size (length) is simple - just have a variable that stores number of elements, and increment it each time you write a new element.
+
+### Operators
+For subtask 2 we need to make the above mentioned methods operators.
+
+It is actually very easy - classes in Python have special methods that are related to functions and operators. What we need to do is overload them as following:
+- To make `obj[key] = value` work, we need to name our writing method `__setitem__()`.
+- To make `obj[key]` work, we need to name our reading method `__getitem__()`.
+- To make `len(obj)` work, we need to name our size method `__len__()`.
+
+### Iteration
+For subtask 3 we need to implement `for` loop support.
+
+Making a class object iterable requires two special methods: `__iter__()` serves as a constructor for the iterator object, `__next__()` returns the next item for each iteration. So, we need to iterate all buckets, and all elements for each of the buckets. For that we'll need to store the index of the current bucket, and the current element (node). With each iteration we need to find next node in the current bucket, or if it is empty, the next occupied bucket. After the last element we need to raise the `StopIteration` exception.
+
+### Rehashing
+The downside of having linked lists instead of single elements raises is the raise of complexity from constant to linear. So, when the table becomes full enough, we need to increase its capacity and readd the elements, because the indexes will now differ. That process is called **rehashing**. It should be done when about 3/4 of the buckets are occupied.
+
+To rehash the table, we need to create a new set of counters and buckets, as we'll need the old ones in the process. Using the iteration methods we created, we can just add every element to the new set of buckets and update the counters accordingly. When all the elements are added, replace the old counters and buckets with the new ones.
 
 ### Testing
  Down below you can see how this hash table works:
@@ -140,16 +117,10 @@ Here's a comparison with Python's in-built `dict`:
 {0: 'foo_0', 1: 'foo_1', 2: 'foo_2', 3: 'foo_3', 4: 'foo_4'}
 
 >>> # try iterating through both
->>> # our hash table works fine
 >>> ''.join([str(key) for key, value in a])
 '0123456789'
->>> # build-in dict throws exception
->>> ''.join([str(key) for key, value in b]) 
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "<stdin>", line 1, in <listcomp>
-TypeError: cannot unpack non-iterable int object
->>> ''.join([str(key) for key, value in b])
+>>> ''.join([str(key) for key, value in b.items()]) 
+'0123456789'
 ```
 
 [hash-table]: hash.py
