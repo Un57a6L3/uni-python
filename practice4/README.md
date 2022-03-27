@@ -11,24 +11,20 @@ Table of Contents:
     - [Operators](#operators)
     - [Iteration](#iteration)
     - [Rehashing](#rehashing)
-    - [Testing](#testing)
+  - [Task 2 (In-built functions)](#task-2-in-built-functions)
+  - [Task 5 (Context manager)](#task-5-context-manager)
 
 ---
 ## Task 1 (Hash table) *// not in variant*
-> (EN) Implement a hash table data structure, an analogue of built-in `dict`. Use the function `hash`. Do testing on random data using `assert` and `dict`.
+> Implement a hash table data structure, an analogue of built-in `dict`. Use the function `hash`.
 > 1. Implement methods for reading, writing, getting the size of the hash table.
 > 2. Make the above mentioned methods standard operators/functions, as in `dict`.
 > 3. Implement support of `for` loops.
 
-> (RU) Реализуйте свою структуру данных, хэш-таблицу, аналог встроенного `dict`. Используйте функцию `hash`. Примените тестирование на случайных данных с использованием `assert` и `dict`.
-> 1. Реализуйте методы чтения, записи, получения размера хэш-таблицы.
-> 2. Сделайте вышеупомянутые методы стандартными операторами/функциями, по аналогии с dict.
-> 3. Реализуйте поддержку для цикла for.
-
 ### Description
 So, how does a hash table work? Every key is passed through a hash function, the output hash being the index of the so-called **bucket** where the key-value pair is stored. However, a hash function may output the same hash for different inputs. That is called a **collision**. If a collision occurs, we'll make a linked list at the index and append the new pair.
 
-You can find the full code [here][hash-table].
+You can find the full code [here][t1].
 
 ### Classes
 For the key-value pairs we'll make a `Node` data structure:
@@ -44,10 +40,10 @@ For the actual hash table we'll make a class `MyDict`. Here's the constructor:
 ```python
 class MyDict:
     def __init__(self, capacity=32, debug=False):
-        self.capacity = capacity
-        self.debug = debug
-        self.size = 0
-        self.taken = 0
+        self.capacity = capacity  # number of buckets
+        self.debug = debug        # flag for debug prints
+        self.size = 0             # counter of elements
+        self.taken = 0            # counter of non-empty buckets
         self.__buckets = [None] * self.capacity
 ```
 
@@ -78,51 +74,55 @@ The downside of having linked lists instead of single elements raises is the rai
 
 To rehash the table, we need to create a new set of counters and buckets, as we'll need the old ones in the process. Using the iteration methods we created, we can just add every element to the new set of buckets and update the counters accordingly. When all the elements are added, replace the old counters and buckets with the new ones.
 
-### Testing
- Down below you can see how this hash table works:
-```pycon
->>> from hash import MyDict
->>> a = MyDict()
->>> print(a)
-{}
->>> a[4] = 'foo'
->>> a[4]
-'foo'
->>> a['bar'] = 7
->>> a['bar']
-7
->>> print(a)
-{'bar': 7, 4: 'foo'}
->>> a['sampletext'] = 5, 7, 3, 'wow'
->>> a['sampletext']                 
-(5, 7, 3, 'wow')
->>> print(a)
-{'bar': 7, 4: 'foo', 'sampletext': (5, 7, 3, 'wow')}
-```
+## Task 2 (In-built functions)
+> 1. Write code that prints all variables of a class object.
+> 2. Write code that calls a class object's method by its name given as string.
 
-Here's a comparison with Python's in-built `dict`:
-```pycon
->>> # fill hash table and dict with elements
->>> from hash import MyDict
->>> a = MyDict()
->>> b = dict()
->>> for i in range(5): 
-...     a[i] = f'foo_{i}'
-...     b[i] = f'foo_{i}'
-...
->>> # print hash table and dict
->>> print(a)
-{0: 'foo_0', 1: 'foo_1', 2: 'foo_2', 3: 'foo_3', 4: 'foo_4'}
->>> print(b)
-{0: 'foo_0', 1: 'foo_1', 2: 'foo_2', 3: 'foo_3', 4: 'foo_4'}
+As the task name suggests, we'll use in-built functions. For the first subtask we'll use the `vars(obj)` function that does exactly what we want. For the second subtask we can use the `getattr(obj, 'attr')` function. Here's the [code][t2].
 
->>> # try iterating through both
->>> ''.join([str(key) for key, value in a])
-'0123456789'
->>> ''.join([str(key) for key, value in b.items()]) 
-'0123456789'
-```
+## Task 5 (Context manager)
+> Implement classes to write HTML code using the `with` statement.
+> 
+> Usage example:
+> ```python
+> html = HTML()
+> with html.body():
+>     with html.div():
+>         with html.div():
+>             html.p('Line one')
+>             html.p('Line two')
+>         with html.div():
+>             html.p('Line three')
+> print(html.get_code())
+> ```
+> Result:
+> ```
+> <body>
+> <div>
+> <div>
+> <p>Line one</p>
+> <p>Line two</p>
+> </div>
+> <div>
+> <p>Line three</p>
+> </div>
+> </div>
+> </body>
+> ```
 
-[hash-table]: hash.py
+The `with some_expression:` statement works like this:
+1. `some_expression` is processed
+2. The special method `__exit__()` is loaded.
+3. The special method `__enter__()` is executed.
+4. The block inside `with` is executed.
+5. The `__exit__()` method is executed.
+
+So we need are a `HTML` class with a list of strings and methods `body()`, `div()` and `p()`. The first two will return an object of a class with overloaded `__enter__()` and `__exit__()` methods that append tags to the list, the last will just append a `<p>...</p>` tag.
+
+Sounds complicated, I know. I was confused as well. Just take a look at the [code][t5] and you'll understand all that.
+
+[t1]: hash.py
+[t2]: pr4-task2.py
+[t5]: pr4-task5.py
 
 [kp-rep]: https://github.com/true-grue/kispython
