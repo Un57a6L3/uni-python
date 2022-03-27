@@ -26,53 +26,41 @@ COLORS = [
 
 def draw_line(coords, color_index):
     canvas.create_line(*[(x * SCALE_X, y * SCALE_Y) for x, y in coords],
-                       fill='#%02x%02x%02x' % COLORS[color_index], width=4)
+                       fill='#%02x%02x%02x' % COLORS[color_index], width=4,
+                       joinstyle='round', capstyle='projecting')
 
 
 def draw_corner(args, color, isY=True):
-    '''
-    Actions 0xF4 (Y-corner) and 0xF5 (X-corner)
-    Y or X is what coordinate is changed first
-    '''
-    x0 = x1 = args[0]
-    y0 = y1 = args[1]
-    for i in range(2, len(args), 1):
-        if isY:
-            y1 = args[i]
-        else:
-            x1 = args[i]
-        draw_line(((x0, y0), (x1, y1)), color)
+    '''Actions 0xF4 (Y-corner) and 0xF5 (X-corner)'''
+    x, y = args[0], args[1]
+    coords = [(x, y)]
+    for i in range(2, len(args)):
+        x, y = (x, args[i]) if isY else (args[i], y)
         isY = not isY
-        x0 = x1
-        y0 = y1
+        coords.append((x, y))
+    draw_line(coords, color)
 
 
 def draw_abs(args, color):
     '''Action 0xF6 (Absolute line)'''
-    x0 = x1 = args[0]
-    y0 = y1 = args[1]
+    coords = [(args[0], args[1])]
     for i in range(2, len(args), 2):
-        x1 = args[i]
-        y1 = args[i + 1]
-        draw_line(((x0, y0), (x1, y1)), color)
-        x0 = x1
-        y0 = y1
+        coords.append((args[i], args[i + 1]))
+    draw_line(coords, color)
 
 
 def draw_rel(args, color):
     '''Action 0xF7 (Relative line)'''
-    x0 = x1 = args[0]
-    y0 = y1 = args[1]
-    for i in range(2, len(args), 1):
-        xdisp = args[i] >> 4 & 7
-        xs = args[i] >> 4 & 8
-        ydisp = args[i] & 7
-        ys = args[i] & 8
-        x1 += -xdisp if xs else xdisp
-        y1 += -ydisp if ys else ydisp
-        draw_line(((x0, y0), (x1, y1)), color)
-        x0 = x1
-        y0 = y1
+    x, y = args[0], args[1]
+    coords = [(x, y)]
+    for i in range(2, len(args)):
+        xd, yd = args[i] >> 4 & 7, args[i] & 7
+        xs, ys = args[i] >> 4 & 8, args[i] & 8
+        x += -xd if xs else xd
+        y += -yd if ys else yd
+        coords.append((x, y))
+    coords += coords if len(coords) == 1 else []
+    draw_line(coords, color)
 
 
 def log(pic):
@@ -89,43 +77,36 @@ def log(pic):
 
     # Action (logging) loop
     for cmd in commands:
-        action = cmd[0]
-        args = cmd[1:]
-        argstr = [f'{num:02x}' for num in args]
+        argprint = True
+        action, args = cmd[0], cmd[1:]
+        argstr = [f'{num:02X}' for num in args]
+        argstr = ", ".join(argstr) if len(argstr) else "None"
         match action:
             case 0xf0:
                 log.write(f'F0: Enabled picture draw\n')
-                log.write(f'    Change picture color to {args[0]}\n')
             case 0xf1:
                 log.write(f'F1: Disable picture draw\n')
             case 0xf2:
                 log.write(f'F2: Enabled priority draw\n')
-                log.write(f'    Change priority color to {args[0]}\n')
             case 0xf3:
                 log.write(f'F3: Disable priority draw\n')
             case 0xf4:
                 log.write(f'F4: Draw Y corner\n')
-                log.write(f'    Arguments: {", ".join(argstr)}\n')
             case 0xf5:
                 log.write(f'F5: Draw X corner\n')
-                log.write(f'    Arguments: {", ".join(argstr)}\n')
             case 0xf6:
                 log.write(f'F6: Absolute line\n')
-                log.write(f'    Arguments: {", ".join(argstr)}\n')
             case 0xf7:
                 log.write(f'F7: Relative line\n')
-                log.write(f'    Arguments: {", ".join(argstr)}\n')
             case 0xf8:
                 log.write(f'F8: Fill\n')
-                log.write(f'    Arguments: {", ".join(argstr)}\n')
             case 0xf9:  # not used in given pictures
                 log.write(f'F9: Pen size and style\n')
-                log.write(f'    Arguments: {", ".join(argstr)}\n')
             case 0xfa:  # not used in given pictures
                 log.write(f'FA: Plot with pen\n')
-                log.write(f'    Arguments: {", ".join(argstr)}\n')
             case 0xff:
                 log.write(f'FF: End of file\n')
+        log.write(f'\tArguments: {argstr}\n')
 
 
 def draw(pic):
@@ -144,8 +125,7 @@ def draw(pic):
 
     # Action loop
     for cmd in commands:
-        action = cmd[0]
-        args = cmd[1:]
+        action, args = cmd[0], cmd[1:]
         if action == 0xf0:
             picdraw = True
             piccolor = args[0]
