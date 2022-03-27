@@ -19,3 +19,4 @@ test.py
 output.*
 gen_*.*
 !example*.*
+!PIC.*.log

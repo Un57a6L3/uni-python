@@ -1,0 +1,535 @@
+F0: Enabled picture draw
+    Change picture color to 0
+F2: Enabled priority draw
+    Change priority color to 15
+F5: Draw X corner
+    Arguments: 00, 00, 9f, a7, 00, 00
+F2: Enabled priority draw
+    Change priority color to 12
+F5: Draw X corner
+    Arguments: 9e, 88, 8d
+F6: Absolute line
+    Arguments: 8d, 88, 80, 7e
+F2: Enabled priority draw
+    Change priority color to 5
+F6: Absolute line
+    Arguments: 80, 7e, 77, 77, 77, 77
+F2: Enabled priority draw
+    Change priority color to 10
+F6: Absolute line
+    Arguments: 78, 78, 6f, 70, 6e, 6e, 6e, 68, 6f, 66, 6e, 64, 6e, 5e, 70, 5c, 6e, 5a, 6e, 4c, 6c, 4c, 69, 51, 68, 53, 67, 49
+F6: Absolute line
+    Arguments: 68, 45, 6a, 3f, 7f, 1d, 7f, 1d, 8a, 23, 8d, 23, 8f, 25, 9a, 1e, 9e, 22
+F6: Absolute line
+    Arguments: 7f, 1d, 81, 21, 83, 2b, 70, 45, 70, 4c, 6e, 4d
+F4: Draw Y corner
+    Arguments: 78, 78, 53
+F2: Enabled priority draw
+    Change priority color to 12
+F6: Absolute line
+    Arguments: 82, 80, 81, 7d, 80, 76, 81, 73, 80, 70, 80, 69, 82, 66, 80, 65, 80, 5b, 82, 59, 78, 53
+F6: Absolute line
+    Arguments: 97, 33, 9d, 34, 9d, 37, 9b, 3b, 9d, 3c, 9d, 41, 9e, 42, 9e, 46, 9a, 45, 96, 48, 98, 42, 96, 3d, 93, 3a, 93, 35, 97, 32
+F5: Draw X corner
+    Arguments: 9d, 36, 94
+F5: Draw X corner
+    Arguments: 93, 3a, 9c
+F5: Draw X corner
+    Arguments: 9d, 42, 98
+F5: Draw X corner
+    Arguments: 97, 3e, 9d
+F2: Enabled priority draw
+    Change priority color to 10
+F5: Draw X corner
+    Arguments: 82, 28, 78, 2c, 82
+F5: Draw X corner
+    Arguments: 7e, 32, 72, 36, 7c
+F5: Draw X corner
+    Arguments: 76, 3b, 6c, 3f, 74
+F5: Draw X corner
+    Arguments: 70, 45, 66, 49, 70
+F0: Enabled picture draw
+    Change picture color to 6
+F3: Disable priority draw
+F6: Absolute line
+    Arguments: 6f, 70, 5a, 6e, 49, 70, 36, 6e, 29, 6c, 21, 6f, 1f, 73, 1d, 76, 19, 76, 16, 7b, 14, 88, 18, 98, 1f, 9c, 2d, 9f, 38, 9c, 38, 99, 37, 93, 3a, 91, 3c, 91, 48, 94, 5a, 92, 6d, 94, 70, 9a, 73, 9c, 7b, 9f, 81, 9c, 87, 96, 8d, 96, 93, 93, 9e, 96
+F2: Enabled priority draw
+    Change priority color to 6
+F6: Absolute line
+    Arguments: 10, 0d, 10, 29, 0f, 2a, 0f, 31, 0d, 33, 0d, 34, 0a, 39, 10, 39, 10, 3a, 14, 3b, 15, 39, 19, 38, 17, 34, 16, 2e, 16, 15
+F0: Enabled picture draw
+    Change picture color to 8
+F2: Enabled priority draw
+    Change priority color to 13
+F5: Draw X corner
+    Arguments: 22, 90, 2e, 91, 22
+F4: Draw Y corner
+    Arguments: 29, 8f, 7b, 28, 8f
+F5: Draw X corner
+    Arguments: 27, 7a, 2a, 79, 27
+F5: Draw X corner
+    Arguments: 2a, 7d, 27, 81, 2a, 7d
+F6: Absolute line
+    Arguments: 2b, 7e, 30, 83, 30, 84, 2b, 7f
+F7: Relative line
+    Arguments: 26, 80, 90, 02, 10, 01, c0, 09, 10, 0b, 19, 10, 20
+F2: Enabled priority draw
+    Change priority color to 10
+F6: Absolute line
+    Arguments: 46, 5f, 46, 5a, 49, 59, 4a, 5f, 46, 5f
+F0: Enabled picture draw
+    Change picture color to 14
+F6: Absolute line
+    Arguments: 4a, 5a, 53, 53
+F6: Absolute line
+    Arguments: 4a, 5b, 53, 54, 53, 55
+F0: Enabled picture draw
+    Change picture color to 7
+F3: Disable priority draw
+F6: Absolute line
+    Arguments: 49, 71, 44, 71, 3f, 73, 45, 76, 4c, 73, 48, 71
+F6: Absolute line
+    Arguments: 53, 72, 50, 74, 53, 76, 57, 74, 53, 72
+F6: Absolute line
+    Arguments: 4e, 78, 4c, 7a, 4e, 7c, 50, 7a, 4e, 78
+F6: Absolute line
+    Arguments: 58, 79, 54, 7b, 59, 7c, 5d, 7a, 58, 79
+F0: Enabled picture draw
+    Change picture color to 6
+F2: Enabled priority draw
+    Change priority color to 9
+F6: Absolute line
+    Arguments: 1f, 60, 1e, 5e, 1c, 5d, 1b, 5a, 1a, 59, 1a, 51, 17, 4a, 11, 4b, 11, 4c, 0e, 4e, 0e, 5b, 09, 5f, 09, 60, 0f, 60, 10, 61, 16, 61, 16, 60, 1f, 60
+F2: Enabled priority draw
+    Change priority color to 7
+F6: Absolute line
+    Arguments: 38, 50, 35, 4e, 33, 4a, 33, 41, 2d, 41, 2d, 43, 29, 45, 28, 4c, 26, 4f, 26, 50, 2b, 50, 2c, 51, 30, 51, 30, 50, 38, 50
+F4: Draw Y corner
+    Arguments: 2e, 40, 3f
+F2: Enabled priority draw
+    Change priority color to 10
+F6: Absolute line
+    Arguments: 54, 6f, 54, 6e, 50, 6c, 4e, 68, 4e, 60, 4b, 5e
+F6: Absolute line
+    Arguments: 45, 5e, 42, 60, 42, 69, 40, 6d, 3f, 6d, 3d, 6f
+F0: Enabled picture draw
+    Change picture color to 0
+F6: Absolute line
+    Arguments: 6d, 58, 69, 56, 67, 58, 68, 5c, 64, 5a, 63, 5d, 60, 5b, 5e, 5e, 60, 61, 5c, 60, 5b, 64, 5d, 66, 59, 68, 57, 6c, 59, 6d
+F2: Enabled priority draw
+    Change priority color to 6
+F6: Absolute line
+    Arguments: 2f, 01, 2e, 08, 2b, 0b, 2a, 0e, 2b, 11, 2a, 14, 27, 14, 28, 16, 26, 19, 24, 18, 23, 1b, 24, 1d, 22, 1f, 1e, 20, 19, 1d, 1a, 18, 19, 15, 16, 13, 14, 0f, 0f, 0c, 0c, 0f, 0b, 13, 0d, 16, 0e, 1a, 0c, 1c, 09, 1d, 07, 19, 04, 1d, 02, 1b, 01, 18
+F6: Absolute line
+    Arguments: 17, 1e, 18, 1c
+F7: Relative line
+    Arguments: 0f, 1d, 9d
+F6: Absolute line
+    Arguments: 4b, 01, 49, 06, 48, 09, 4b, 0a, 49, 10, 46, 13, 45, 18, 49, 17, 46, 21, 42, 29, 40, 2d
+F7: Relative line
+    Arguments: 3f, 2e, 22, 23, a5, 42, 5b, 2a, 41, 52, 31, 6c, de, 3b
+F6: Absolute line
+    Arguments: 5c, 2b, 5b, 24, 59, 1c, 56, 13, 59, 13, 56, 06, 58, 09, 56, 01
+F0: Enabled picture draw
+    Change picture color to 2
+F3: Disable priority draw
+F5: Draw X corner
+    Arguments: 01, 28, 0f
+F5: Draw X corner
+    Arguments: 17, 28, 41
+F5: Draw X corner
+    Arguments: 5d, 28, 77
+F5: Draw X corner
+    Arguments: 01, 20, 0f
+F5: Draw X corner
+    Arguments: 17, 20, 1d
+F5: Draw X corner
+    Arguments: 21, 20, 2a
+F6: Absolute line
+    Arguments: 2a, 20, 2c, 1a, 2b, 18, 2d, 14, 2c, 12, 2e, 0a, 31, 15, 30, 17, 32, 20
+F6: Absolute line
+    Arguments: 32, 20, 34, 20, 35, 1d, 33, 1c, 35, 16, 34, 14, 36, 09, 38, 14, 38, 16, 3a, 1a, 39, 1b, 3b, 20, 45, 20
+F6: Absolute line
+    Arguments: 5b, 20, 5f, 21, 62, 12, 65, 1e, 67, 16, 65, 15, 68, 07, 6a, 11, 6b, 14, 6e, 1c, 6c, 1e, 6e, 20, 6f, 20, 71, 18, 70, 15, 72, 14, 74, 09, 78, 18, 76, 1a, 79, 20, 7c, 20
+F6: Absolute line
+    Arguments: 83, 1e, 88, 16, 84, 15, 88, 0c, 87, 07, 8a, 01
+F6: Absolute line
+    Arguments: 92, 01, 95, 0e, 92, 11, 98, 1c, 9b, 10, 9c, 11, 9e, 02
+F6: Absolute line
+    Arguments: 0e, 2f, 01, 32
+F6: Absolute line
+    Arguments: 01, 3e, 0f, 41, 15, 41, 21, 3b, 23, 35, 21, 31, 17, 2f
+F6: Absolute line
+    Arguments: 42, 33, 25, 37, 44, 3f, 50, 3f, 5c, 3d, 5e, 3a, 5e, 38, 5d, 37
+F0: Enabled picture draw
+    Change picture color to 6
+F2: Enabled priority draw
+    Change priority color to 6
+F7: Relative line
+    Arguments: 4d, 36, a5, 31, 20, 2a, 9b
+F0: Enabled picture draw
+    Change picture color to 8
+F7: Relative line
+    Arguments: 48, 39, 31
+F7: Relative line
+    Arguments: 53, 39, 20
+F0: Enabled picture draw
+    Change picture color to 6
+F2: Enabled priority draw
+    Change priority color to 11
+F4: Draw Y corner
+    Arguments: 78, 52, 3c
+F2: Enabled priority draw
+    Change priority color to 6
+F8: Fill
+    Arguments: 4d, 3b
+F0: Enabled picture draw
+    Change picture color to 3
+F8: Fill
+    Arguments: 45, 39
+F0: Enabled picture draw
+    Change picture color to 2
+F8: Fill
+    Arguments: 
+F8: Fill
+    Arguments: 4b, 39, 53, 38
+F0: Enabled picture draw
+    Change picture color to 6
+F2: Enabled priority draw
+    Change priority color to 12
+F8: Fill
+    Arguments: 90, 7e, 9a, 41, 97, 38, 81, 1f
+F2: Enabled priority draw
+    Change priority color to 10
+F8: Fill
+    Arguments: 74, 6a, 6b, 47, 71, 3e, 77, 34, 7d, 2a
+F0: Enabled picture draw
+    Change picture color to 0
+F8: Fill
+    Arguments: 7a, 73, 99, 44, 98, 3c, 97, 34, 69, 4b, 6e, 42, 75, 3a, 7c, 30, 7f, 25
+F0: Enabled picture draw
+    Change picture color to 8
+F2: Enabled priority draw
+    Change priority color to 13
+F8: Fill
+    Arguments: 24, 7f
+F2: Enabled priority draw
+    Change priority color to 10
+F8: Fill
+    Arguments: 48, 5d
+F0: Enabled picture draw
+    Change picture color to 2
+F8: Fill
+    Arguments: 63, 6c
+F0: Enabled picture draw
+    Change picture color to 6
+F8: Fill
+    Arguments: 48, 69
+F2: Enabled priority draw
+    Change priority color to 9
+F8: Fill
+    Arguments: 11, 5f
+F2: Enabled priority draw
+    Change priority color to 7
+F8: Fill
+    Arguments: 2c, 4b
+F2: Enabled priority draw
+    Change priority color to 6
+F8: Fill
+    Arguments: 12, 31
+F0: Enabled picture draw
+    Change picture color to 7
+F3: Disable priority draw
+F8: Fill
+    Arguments: 59, 7b, 4e, 7a, 45, 74, 53, 74
+F0: Enabled picture draw
+    Change picture color to 6
+F8: Fill
+    Arguments: 26, 81
+F0: Enabled picture draw
+    Change picture color to 9
+F5: Draw X corner
+    Arguments: 2b, 12, 2c
+F5: Draw X corner
+    Arguments: 31, 12, 34
+F5: Draw X corner
+    Arguments: 39, 12, 46
+F5: Draw X corner
+    Arguments: 5a, 12, 61
+F5: Draw X corner
+    Arguments: 63, 12, 65
+F5: Draw X corner
+    Arguments: 6b, 12, 72
+F5: Draw X corner
+    Arguments: 77, 12, 85
+F5: Draw X corner
+    Arguments: 93, 12, 9a
+F0: Enabled picture draw
+    Change picture color to 2
+F2: Enabled priority draw
+    Change priority color to 6
+F8: Fill
+    Arguments: 03, 15
+F0: Enabled picture draw
+    Change picture color to 8
+F8: Fill
+    Arguments: 0d, 12, 18, 19
+F0: Enabled picture draw
+    Change picture color to 2
+F3: Disable priority draw
+F8: Fill
+    Arguments: 0a, 26, 2e, 25, 65, 25, 90, 20
+F0: Enabled picture draw
+    Change picture color to 1
+F8: Fill
+    Arguments: 2c, 0e, 32, 08, 5b, 07, 98, 0d
+F0: Enabled picture draw
+    Change picture color to 9
+F8: Fill
+    Arguments: 06, 1e, 18, 1f, 28, 1e, 32, 17, 3f, 17, 5c, 1a, 65, 17, 6e, 16, 7d, 18, 97, 15
+F0: Enabled picture draw
+    Change picture color to 10
+F8: Fill
+    Arguments: 
+F0: Enabled picture draw
+    Change picture color to 0
+F2: Enabled priority draw
+    Change priority color to 12
+F6: Absolute line
+    Arguments: 9b, 45, 9e, 45
+F6: Absolute line
+    Arguments: 9e, 38, 9e, 39, 9d, 39, 9c, 3a
+F0: Enabled picture draw
+    Change picture color to 3
+F2: Enabled priority draw
+    Change priority color to 10
+F6: Absolute line
+    Arguments: 59, 63, 5a, 6a, 5c, 64
+F6: Absolute line
+    Arguments: 56, 69, 57, 6d
+F0: Enabled picture draw
+    Change picture color to 0
+F3: Disable priority draw
+F6: Absolute line
+    Arguments: 83, 2b, 84, 2e, 86, 2f, 88, 31, 89, 34, 8c, 36, 8f, 3b, 8e, 3f, 8e, 42, 90, 44, 8f, 49, 90, 4c, 8f, 52, 90, 58, 93, 5b, 97, 60, 98, 62, 9e, 60
+F6: Absolute line
+    Arguments: 90, 87, 91, 82, 95, 82, 96, 84, 96, 88
+F6: Absolute line
+    Arguments: 95, 80, 93, 80, 92, 7d, 93, 76, 94, 73, 97, 74, 97, 7b, 96, 80
+F6: Absolute line
+    Arguments: 96, 72, 94, 72, 93, 6b, 93, 65, 96, 64, 98, 67, 97, 6f, 97, 72
+F6: Absolute line
+    Arguments: 97, 60, 96, 62, 94, 62, 93, 5c
+F6: Absolute line
+    Arguments: 90, 83, 8e, 84, 8d, 81, 8d, 7a, 8e, 79, 90, 79, 91, 7b, 91, 80, 91, 82, 90, 84
+F6: Absolute line
+    Arguments: 90, 75, 8f, 75, 8e, 73, 8e, 6b, 90, 68, 91, 69, 92, 6d, 92, 73, 91, 75
+F6: Absolute line
+    Arguments: 92, 65, 90, 65, 8f, 62, 8f, 5b, 90, 59, 93, 5c, 93, 64, 92, 65
+F5: Draw X corner
+    Arguments: 98, 66, 9e
+F5: Draw X corner
+    Arguments: 97, 71, 9e
+F5: Draw X corner
+    Arguments: 97, 7c, 9e
+F5: Draw X corner
+    Arguments: 96, 83, 9e
+F6: Absolute line
+    Arguments: 81, 7a, 8d, 83
+F6: Absolute line
+    Arguments: 81, 72, 8d, 79
+F6: Absolute line
+    Arguments: 82, 66, 8d, 6c
+F6: Absolute line
+    Arguments: 82, 59, 8e, 5e
+F5: Draw X corner
+    Arguments: 88, 32, 84, 2e
+F5: Draw X corner
+    Arguments: 8b, 36, 86, 3a, 8e
+F5: Draw X corner
+    Arguments: 8e, 3e, 8a, 42, 8e
+F6: Absolute line
+    Arguments: 78, 77, 76, 74, 76, 6f, 78, 6d, 76, 6a, 76, 63, 78, 60, 76, 5e, 76, 55, 78, 53
+F6: Absolute line
+    Arguments: 6f, 70, 71, 6e, 71, 68, 70, 66, 71, 63, 71, 5e, 70, 5c
+F6: Absolute line
+    Arguments: 72, 44, 73, 46, 73, 4b, 70, 4d, 71, 50, 71, 57, 71, 59, 70, 5b
+F6: Absolute line
+    Arguments: 78, 53, 70, 4d
+F6: Absolute line
+    Arguments: 76, 5e, 71, 5a
+F6: Absolute line
+    Arguments: 75, 67, 71, 65
+F6: Absolute line
+    Arguments: 76, 6e, 72, 6b
+F6: Absolute line
+    Arguments: 73, 46, 8f, 54
+F4: Draw Y corner
+    Arguments: 75, 47, 3f
+F4: Draw Y corner
+    Arguments: 79, 49, 38
+F4: Draw Y corner
+    Arguments: 7c, 4a, 36
+F4: Draw Y corner
+    Arguments: 80, 4c, 30
+F4: Draw Y corner
+    Arguments: 83, 4e, 35
+F4: Draw Y corner
+    Arguments: 86, 4f, 3e
+F4: Draw Y corner
+    Arguments: 8a, 51, 45
+F4: Draw Y corner
+    Arguments: 8d, 53, 4c
+F6: Absolute line
+    Arguments: 43, 60, 46, 61, 48, 62, 4a, 62, 4e, 60
+F6: Absolute line
+    Arguments: 48, 62, 48, 6b, 45, 6f
+F6: Absolute line
+    Arguments: 11, 4d, 16, 54, 19, 51
+F6: Absolute line
+    Arguments: 16, 54, 16, 5a, 19, 5f, 1a, 60
+F6: Absolute line
+    Arguments: 2d, 44, 2d, 4a, 2b, 50
+F7: Relative line
+    Arguments: 31, 48, 04, 22
+F6: Absolute line
+    Arguments: 15, 37, 13, 31, 13, 20
+F4: Draw Y corner
+    Arguments: 15, 1b, 12
+F6: Absolute line
+    Arguments: 10, 55, 10, 5a, 0e, 5f
+F0: Enabled picture draw
+    Change picture color to 10
+F7: Relative line
+    Arguments: 1a, 0e, 14, 12, 31, 2b
+F7: Relative line
+    Arguments: 23, 0c, 32, 2b, 1d, aa
+F7: Relative line
+    Arguments: 1b, 07, 51, 2c
+F7: Relative line
+    Arguments: 01, 0e, 12, 23, 30, 3c
+F7: Relative line
+    Arguments: 04, 04, 43, 21, 2c
+F0: Enabled picture draw
+    Change picture color to 0
+F4: Draw Y corner
+    Arguments: 11, 0f, 23
+F6: Absolute line
+    Arguments: 0a, 37, 0e, 33, 0f, 2a
+F6: Absolute line
+    Arguments: 29, 45, 28, 4c, 26, 4f
+F6: Absolute line
+    Arguments: 0e, 4e, 0e, 5b, 09, 5f
+F6: Absolute line
+    Arguments: 42, 60, 42, 69, 40, 6d, 3f, 6d, 3d, 6f
+F6: Absolute line
+    Arguments: 44, 66, 44, 6b, 43, 6d
+F6: Absolute line
+    Arguments: 4b, 67, 4b, 6a, 4d, 6d
+F7: Relative line
+    Arguments: 60, 6f, 9b, 1b, 31, 0c, 3b, 34, 0c, 2b, 21
+F0: Enabled picture draw
+    Change picture color to 11
+F6: Absolute line
+    Arguments: 43, 2d, 4b, 21, 4e, 27, 54, 1f, 59, 26
+F6: Absolute line
+    Arguments: 48, 14, 4e, 0d, 54, 17, 56, 10
+F6: Absolute line
+    Arguments: 4d, 04, 50, 0b, 54, 02
+F0: Enabled picture draw
+    Change picture color to 0
+F7: Relative line
+    Arguments: 66, 60, 9b, 2b, 32, 1b, 12
+F7: Relative line
+    Arguments: 5e, 69, aa, 2c, 22, 1b, 21
+F6: Absolute line
+    Arguments: 86, 25, 8a, 30
+F6: Absolute line
+    Arguments: 8e, 29, 92, 2e
+F6: Absolute line
+    Arguments: 9a, 25, 97, 2d
+F6: Absolute line
+    Arguments: 90, 37, 92, 42
+F6: Absolute line
+    Arguments: 94, 41, 95, 45
+F6: Absolute line
+    Arguments: 93, 4b, 96, 53
+F6: Absolute line
+    Arguments: 92, 51, 97, 51
+F6: Absolute line
+    Arguments: 9a, 4c, 9d, 55
+F6: Absolute line
+    Arguments: 9d, 4b, 9e, 50
+F6: Absolute line
+    Arguments: 9a, 55, 9e, 55
+F6: Absolute line
+    Arguments: 96, 29, 9b, 29
+F6: Absolute line
+    Arguments: 85, 29, 8b, 29
+F0: Enabled picture draw
+    Change picture color to 0
+F7: Relative line
+    Arguments: 38, 50, b0
+F0: Enabled picture draw
+    Change picture color to 6
+F7: Relative line
+    Arguments: 57, 6e, c1
+F0: Enabled picture draw
+    Change picture color to 0
+F6: Absolute line
+    Arguments: 3d, 6f, 43, 6f, 44, 6e, 48, 70, 4b, 6e, 4e, 71, 50, 6e, 53, 6f
+F0: Enabled picture draw
+    Change picture color to 10
+F7: Relative line
+    Arguments: 1b, 18, 23, 22, 2c, 9a, 42, 1d, 9b, 31
+F7: Relative line
+    Arguments: 03, 19, 2b, 53, 3a
+F0: Enabled picture draw
+    Change picture color to 14
+F2: Enabled priority draw
+    Change priority color to 10
+F7: Relative line
+    Arguments: 59, 62, a0, 19, 02
+F7: Relative line
+    Arguments: 5c, 6a, 02, 99, 20
+F7: Relative line
+    Arguments: 58, 66, a0, 10, 09, 02
+F0: Enabled picture draw
+    Change picture color to 4
+F7: Relative line
+    Arguments: 56, 68, a0, 19, 02
+F7: Relative line
+    Arguments: 5c, 63, 20, 99, 02
+F0: Enabled picture draw
+    Change picture color to 10
+F3: Disable priority draw
+F8: Fill
+    Arguments: 11, 90, 08, 2c, 56, 67, 59, 67, 5c, 66
+F0: Enabled picture draw
+    Change picture color to 2
+F8: Fill
+    Arguments: 08, 35, 36, 37
+F0: Enabled picture draw
+    Change picture color to 6
+F8: Fill
+    Arguments: 36, 75, 4e, 70
+F1: Disable picture draw
+F2: Enabled priority draw
+    Change priority color to 0
+F6: Absolute line
+    Arguments: 3f, 3b, 41, 38, 4b, 36, 59, 36, 5e, 3b, 4e, 3d, 40, 3b
+F6: Absolute line
+    Arguments: 0a, 3b, 0a, 39, 11, 36, 19, 38, 19, 3b, 0a, 3b
+F4: Draw Y corner
+    Arguments: 0e, 37, 3b, 12, 37, 16, 3b
+F6: Absolute line
+    Arguments: 09, 60, 15, 61, 1f, 60, 18, 5c, 10, 5c, 09, 60
+F4: Draw Y corner
+    Arguments: 0e, 60, 5d, 12, 61, 16, 5d, 1a, 60
+F5: Draw X corner
+    Arguments: 22, 90, 30, 91, 22
+F6: Absolute line
+    Arguments: 28, 48, 33, 48, 33, 4b, 35, 4e, 37, 4f, 34, 50, 2e, 51, 26, 50, 28, 4b, 28, 48
+F6: Absolute line
+    Arguments: 9e, 68, 5e, 68, 57, 6c, 3e, 6c, 3e, 6f, 6e, 6f, 78, 78, 9e, 78, 9e, 7f, 80, 7f, 80, 83, 86, 83, 8d, 88, 9e, 88
+FF: End of file

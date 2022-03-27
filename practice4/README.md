@@ -13,6 +13,7 @@ Table of Contents:
     - [Rehashing](#rehashing)
   - [Task 2 (In-built functions)](#task-2-in-built-functions)
   - [Task 5 (Context manager)](#task-5-context-manager)
+  - [Task 8 (Sierra AGI-graphics)](#task-8-sierra-agi-graphics)
 
 ---
 ## Task 1 (Hash table) *// not in variant*
@@ -121,8 +122,18 @@ So we need are a `HTML` class with a list of strings and methods `body()`, `div(
 
 Sounds complicated, I know. I was confused as well. Just take a look at the [code][t5] and you'll understand all that.
 
+## Task 8 (Sierra AGI-graphics)
+
+> Background graphics in old Sierra games was represented as a sequence of commands. The result looked similar to vector graphics. The original King's Quest game had a 160x200px resolution, but you can try redrawing them in high resolution. There is a code template given.
+> 1. Implement command parsing from graphic files in `data/PIC.*`.
+> 2. Using `tkinter`, draw the result in high resolution without fill. Keep in mind the game has two screens: the picture screen and priority screen.
+> 3. *(higher difficulty)* Come up with a way to correctly fill screen sections.
+
+No explanation here yet, but you can take a look at the [code][t8].
+
 [t1]: hash.py
 [t2]: pr4-task2.py
 [t5]: pr4-task5.py
+[t8]: pr4-task8.py
 
 [kp-rep]: https://github.com/true-grue/kispython
