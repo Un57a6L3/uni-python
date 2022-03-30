@@ -115,8 +115,8 @@ def add_white(colormap):
 The rest of the code is pretty straight forward. You can find it [here][t07].
 Here's a couple examples of generated sprites:
 
-![sprite example 01](images/example_sprites_binary.png)
-![sprite example 02](images/example_sprites_viridis.png)
+![sprite example 01](../images/example_sprites_binary.png)
+![sprite example 02](../images/example_sprites_viridis.png)
 
 ## Task 8 (galaxy generation)
 > Picture the legendary first galaxy from the game Elite (1984) with Matplotlib.
@@ -149,7 +149,7 @@ tweaking the seed. All we need after that is to plot the entire thing with `scat
 Some tinkering with plot properties (colors, size, annotation) and the job's done.
 You can find the code [here][t08]. Here's the generated image of the galaxy:
 
-![galaxy example](images/example_galaxy.png)
+![galaxy example](../images/example_galaxy.png)
 
 ## Task 11 (games database)
 > Analyze the [database][games-db] of old computer games.
@@ -198,8 +198,8 @@ and started to decline in 1997.
 Strategy games were popular in 1989-1997. Action games have been popular since 1994.
 RPG, Quest and Sports genres also stayed mildly popular throughout 1986-1998.
 
-![years plot](images/plot_years.png)
-![genres plot](images/plot_genres.png)
+![years plot](../images/plot_years.png)
+![genres plot](../images/plot_genres.png)
 
 [t06]: pr3-task06.py
 [t07]: pr3-task07.py
