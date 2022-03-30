@@ -46,7 +46,6 @@ class HTML_Div:
 def main():
     html = HTML()
     with html.body():
-        pass
         with html.div():
             with html.div():
                 html.p('Python PR4 Task 5')

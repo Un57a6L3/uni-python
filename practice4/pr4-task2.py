@@ -1,4 +1,3 @@
-
 class TestClass():
     '''Class for sample object'''
 
