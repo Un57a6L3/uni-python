@@ -1,0 +1,36 @@
+# !!! This task is unfinished
+
+
+import struct
+
+
+def main(file):
+    A = {f'A{i}': None for i in range(1, 8)}
+    i = 0
+    
+    # find starting index
+    for byte in file:
+        i += 1
+        if byte == 0xba:
+            break
+    file = file[i:]
+    
+    # unpacking data for structure A
+    res = struct.unpack('LfLLHhQHH', file[:36])
+    b_addr, A['A2'], ch_size, ch_addr, d_addr, A['A5'], A['A6'], f_size, f_addr = res
+    A['A3'] = struct.unpack('c' * ch_size, file[ch_addr:ch_addr+ch_size])
+    print(res, A['A3'])
+
+
+if __name__ == '__main__':
+    file = (b'DTCN\xba\x82\x00\x00\x00\x03\x07\xdd>\x02\x00\x00\x00\x94\x00\x00'
+    b'\x00\x96\x00\x16\xdd\x18\xc2\x91\x12 `\x02\x1a\x02\x00\xb7\x00iocdx\x8f\xa7'
+    b'\xa9\xc6qX\x88ykD\xd5\x8a\x10\r\x8b\x90\xbc-?\xce|U3\x00\x8d\x17'
+    b'\xbc\x01\xd5\xe4)bf\x13\rc\xcb\x9fy:\x1e\xd3\xdf\xae\x89\xe6\x00\xcf\xc8\xf0'
+    b'y\xfab\xe2\xfeP\xc7N\x85\x7f.\x0e"\x06\x98\xbb\xfe\x08(\x00\x00\x006\x00'
+    b'\x00\x00D\x00\x00\x00R\x00\x00\x00`\x00\x00\x00\x03\x00\x00\x00%\x00'
+    b'\x00\x00U*o\x8b\x05\x00n\x00\x00\x00fa\x053\x08k>\xb4\x1faw\xff<\xc4\xb6Q'
+    b'm\xea\xed\xa2\x15x \xf9P\xe5\xcb\xf5_\x81\xd4\x8eB6\x8c\x89\x86\x14>\xcf'
+    b'\x15h?')
+    
+    main(file)

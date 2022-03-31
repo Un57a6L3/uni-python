@@ -109,14 +109,14 @@ def main(s):
     return {key: int(value) for value, key in parsed_s}  # put data into dictionary
 ```
 
-[t01]: rt-task1.py
-[t02]: rt-task2.py
-[t03]: rt-task3.py
-[t04]: rt-task4.py
-[t05]: rt-task5.py
-[t06]: rt-task6.py
-[t07]: rt-task7.py
-[t08]: rt-task8.py
+[t01]: rt-task01.py
+[t02]: rt-task02.py
+[t03]: rt-task03.py
+[t04]: rt-task04.py
+[t05]: rt-task05.py
+[t06]: rt-task06.py
+[t07]: rt-task07.py
+[t08]: rt-task08.py
 
 [robot]: http://kispython.ru
 [codecogs]: https://latex.codecogs.com
