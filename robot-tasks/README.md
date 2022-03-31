@@ -109,6 +109,90 @@ def main(s):
     return {key: int(value) for value, key in parsed_s}  # put data into dictionary
 ```
 
+## Task 9
+Implement a Mealy machine as a class.
+The starting state is given. Methods return integer values.
+If a called method is not implemented for a given state, raise `KeyError`.
+
+This task is very easy: all you need to do is make a class called `main`
+(for the robot to parse it properly) with a `state` field.
+Add the methods with the names given in the graph.
+For every state transition that uses this method,
+create an `if` statement that checks the state,
+does the transition and returns the integer from graph.
+After all the `if` statements, raise the `KeyError` exception.
+You can find the code [here][t09].
+
+## Task 10
+Implement a function for transforming table data.
+Input and output tables are given in row form with lists.
+Filled cells have string data, empty ones have `None`.
+
+Do the following transformations:
+1. Delete duplicate rows.
+2. Delete duplicate columns.
+3. Delete empty rows.
+4. Transform the data as in examples below.
+5. Transpose the table.
+
+### Transform example:
+
+Input table:
+| Column 1 | Column 2 | Column 3 | Column 4   |
+| -------- | -------- | -------- | ---------- |
+| 0.7858   | 0        | 0.7858   | 24-03-2004 |
+| 0.0793   | 1        | 0.0793   | 25-11-1999 |
+|          |          |          |            |
+| 0.5257   | 1        | 0.5257   | 16-04-2004 |
+|          |          |          |            |
+| 0.5257   | 1        | 0.5257   | 16-04-2004 |
+| 0.5257   | 1        | 0.5257   | 16-04-2004 |
+
+Output table:
+| Column 1     | Column 2  | Column 3  |
+| ------------ | --------- | --------- |
+| 79%          | 8%        | 53%       |
+| Не выполнено | Выполнено | Выполнено |
+| 04.03.24     | 99.11.25  | 04.04.16  |
+
+Rather than deleting duplicate rows/columns, we can just ignore them.
+The first and third columns are duplicate so we'll only parse the first.
+As for the rows, we can have a `set` where we will add first column values.
+The empty rows can be ignored by adding an `is None` check.
+
+To actually transform the data and have the output transposed,
+we'll have a list for all three data types (rows).
+To format a float to a percentage we can use f-strings: `f'{num:.0%}'`.
+To format the date we can use string slices.
+As we've parsed all the data, return a list of the rows.
+Here's the [code][t10].
+
+## Task 11
+Implement parsing of binary data format.
+There's a start signature, after which structure A is encoded.
+The byte order is from lesser to greater (little-endian).
+Addresses are given as offsets from data start.
+Using `struct` module is advised.
+There are several structures consisting of different data types
+and links to other structures.
+
+Parsing all the different types by hand would be a pain.
+To aid with that, we can use the function `unpack` from module `struct`,
+which is made exactly for parsing mixed data types from byte sequences.
+You can read some useful documentation on it [here][struct].
+Basically, we can use format strings to define types to parse.
+For example, `unpack('hIq', sequence)` will parse a tuple with:
+`short` (int16), `unsigned int` (uint32), `long long` (int64).
+You can also specify byte order with `<` (little-endian) or
+`>` (big-endian) in the beginning of the format string.
+
+Using slices and parsed addresses should let you parse the structures
+and arrays. Keep in mind the `unpack` function returns tuples.
+To parse strings (`char` arrays), you can use `str(foo[0], 'utf8')`,
+where foo is the tuple with a binary string of parsed bytes.
+Dictionary comprehensions will also be very useful for parsing structures.
+Anyways, you can check the code [here][t11].
+
 [t01]: rt-task01.py
 [t02]: rt-task02.py
 [t03]: rt-task03.py
@@ -117,6 +201,10 @@ def main(s):
 [t06]: rt-task06.py
 [t07]: rt-task07.py
 [t08]: rt-task08.py
+[t09]: rt-task09.py
+[t10]: rt-task10.py
+[t11]: rt-task11.py
 
 [robot]: http://kispython.ru
+[struct]: https://docs.python.org/3/library/struct.html
 [codecogs]: https://latex.codecogs.com
