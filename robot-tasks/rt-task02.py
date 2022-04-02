@@ -13,7 +13,6 @@ def main(x):
         return (66 * x + x ** 3) ** 5 + 8 * sin(x) ** 4
 
 
-# cut this out when submitting to robot
-if __name__ == "__main__":
-    f = main(float(input("Enter x: ")))
-    print(f"{f:.2e}")
+# --- cut this out when submitting to robot ---
+f = main(float(input("Enter x: ")))
+print(f"{f:.2e}")

@@ -27,8 +27,7 @@ def main(b, m, n, p):
     return sum_c + sum_j
 
 
-# cut this out when submitting to robot
-if __name__ == "__main__":
-    B, M, N = list(map(int, input("Enter b, m, n: ").split()))
-    P = float(input("Enter p: "))
-    print(f"{main(B, M, N, P):.2e}")
+# --- cut this out when submitting to robot ---
+B, M, N = list(map(int, input("Enter b, m, n: ").split()))
+P = float(input("Enter p: "))
+print(f"{main(B, M, N, P):.2e}")

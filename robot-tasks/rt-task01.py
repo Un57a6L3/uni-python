@@ -6,7 +6,6 @@ def main(z):
            ((41 * floor(z) - 53 * (74 * z ** 2 - z) ** 7) / z ** 5)
 
 
-# cut this out when submitting to robot
-if __name__ == "__main__":
-    f = main(float(input("Enter z: ")))
-    print(f"{f:.2e}")
+# --- cut this out when submitting to robot ---
+f = main(float(input("Enter z: ")))
+print(f"{f:.2e}")

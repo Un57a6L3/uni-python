@@ -19,7 +19,5 @@ def convert():
         print(f"{chr(ord('A') + i)}: 0x{(2 ** s[i + 1] - 2 ** s[i]):08x}")
 
 
-if __name__ == '__main__':
-    # convert()
-    print(f'0x{main(0xb163e58f):08x}')
-    print(f'0x{main(0x29daf9f4):08x}')
+print(f'0x{main(0xb163e58f):08x}')
+print(f'0x{main(0x29daf9f4):08x}')

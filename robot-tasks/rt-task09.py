@@ -37,18 +37,27 @@ class main:
         raise KeyError
 
 
-# cut this out when submitting to robot
-if __name__ == '__main__':
-    o = main()
-    print(o.sweep())
-    print(o.drag())
-    print(o.drag())
-    print(o.drag())
-    print(o.sweep())
-    print(o.drag())
-    print(o.make())
-    print(o.make())
-    print(o.sweep())
-    print(o.sweep())
-    print(o.drag())
-    print(o.drag())
+# --- cut this out when submitting to robot ---
+o = main()
+actions = [
+    'sweep',
+    'drag',
+    'drag',
+    'drag',
+    'sweep',
+    'drag',
+    'make',
+    'make',
+    'sweep',
+    'sweep',
+    'drag',
+    'drag'
+]
+
+for action in actions:
+    try:
+        print(getattr(o, action)())
+    except KeyError as e:
+        print('KeyError')
+    except:
+        print('Other Error')

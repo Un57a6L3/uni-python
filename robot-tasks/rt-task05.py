@@ -9,7 +9,6 @@ def main(z):
     return sum_i
 
 
-# cut this out when submitting to robot
-if __name__ == "__main__":
-    Z = list(map(float, input("Enter vector: ").split()))
-    print(f"{main(Z):.2e}")
+# --- cut this out when submitting to robot ---
+Z = list(map(float, input("Enter vector: ").split()))
+print(f"{main(Z):.2e}")
