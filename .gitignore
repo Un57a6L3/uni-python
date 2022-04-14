@@ -6,10 +6,12 @@
 **/gen
 **/hlp_*
 **/.files
+**/.pytest_cache
 
 # Specific files
 main.py
 test.py
+.coverage
 
 # Extensions
 *.log

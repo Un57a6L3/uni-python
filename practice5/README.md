@@ -1,5 +1,5 @@
-# Python Practice 3
-This folder contains my codes for practice 3 tasks of subject *Python programming*.
+# Python Practice 5
+This folder contains my codes for practice 5 tasks of subject *Python programming*.
 The full practice document can be found [here][kp-rep].
 
 ---
@@ -59,4 +59,49 @@ Now we'll test the function with `python -m doctest fact.test`.
 It is without `-v` key, so we only get a message if testing fails.
 Since all the tests passed, there is no message.
 
+Here are the [code][t1] and [test][t1-test] files
+(they've been edited since this readme).
+
+---
+## Task 5 (Mutation testing)
+> 1. Generate some mutant programs.
+> 2. Generate some mutant programs with 100% branch coverage.
+> 3. Try to finish testing with no surviving mutants.
+> 4. It would be convenient to move the mutation testing code
+> to separate module. Infortunately, that won't work. Why?
+
+Here's the [code][t4]. This task was the hardest I've done so far.
+I won't get into explaining it (at least for now).
+
+The second subtask requires 100% branch coverage.
+So I ran these three commands:
+- `coverage run --branch -m pytest fact.py`
+- `coverage run --branch -m pytest test_fact.py`
+- `coverage report`
+
+Here's what I got:
+```
+Name           Stmts   Miss Branch BrPart  Cover
+------------------------------------------------
+fact.py           13      0      8      0   100%
+test_fact.py      10      0      0      0   100%
+------------------------------------------------
+TOTAL             23      0      8      0   100%
+```
+
+To see the mutants (subtasks 1, 2) and how they are all killed in
+testing (subtask 3), you can take a look at the [log file][t4-log].
+As for subtask 4, I tried to move the function and test
+into a separate file, but that resulted in all mutants surviving.
+Why is that? I don't actually know, but have a couple guesses.
+
+Maybe the testing function doesn't get a working function as
+parameter if it is separate from the mutation testing module.
+Or it has to do with the way **AST** handles data. Or smth else.
+
 [kp-rep]: https://github.com/true-grue/kispython
+
+[t1]: fact.py
+[t1-test]: fact.test
+[t4]: mut.py
+[t4-log]: example_test.log

@@ -225,7 +225,7 @@ def main(user_input=False, filename='muttest.log'):
             f.write(mutant + '\n')
             count += 1
         count = 1
-        f.write('\nKilled mutants:\n')
+        f.write('\n\nKilled mutants:\n')
         f.write('None.\n' if killed == [] else '---------------\n')
         for mutant in killed:
             f.write(f'\n--- Killed mutant #{count} ---\n')
