@@ -62,19 +62,8 @@ Since all the tests passed, there is no message.
 Here are the [code][t1] and [test][t1-test] files
 (they've been edited since this readme).
 
----
-## Task 5 (Mutation testing)
-> 1. Generate some mutant programs.
-> 2. Generate some mutant programs with 100% branch coverage.
-> 3. Try to finish testing with no surviving mutants.
-> 4. It would be convenient to move the mutation testing code
-> to separate module. Infortunately, that won't work. Why?
-
-Here's the [code][t4]. This task was the hardest I've done so far.
-I won't get into explaining it (at least for now).
-
-The second subtask requires 100% branch coverage.
-So I ran these three commands:
+The second subtask in task 4 requires 100% branch coverage.
+To check it I ran these three commands:
 - `coverage run --branch -m pytest fact.py`
 - `coverage run --branch -m pytest test_fact.py`
 - `coverage report`
@@ -88,6 +77,18 @@ test_fact.py      10      0      0      0   100%
 ------------------------------------------------
 TOTAL             23      0      8      0   100%
 ```
+
+---
+## Task 4 (Mutation testing)
+> 1. Generate some mutant programs.
+> 2. Generate some mutant programs with 100% branch coverage.
+> 3. Try to finish testing with no surviving mutants.
+> 4. It would be convenient to move the mutation testing code
+> to separate module. Unfortunately, that won't work. Why?
+
+Here's the [code][t4]. This task was probably the hardest I've done so far.
+I won't explain it here in the readme, but I took some time to write
+documentation in the code itself, so check that out if you're interested.
 
 To see the mutants (subtasks 1, 2) and how they are all killed in
 testing (subtask 3), you can take a look at the [log file][t4-log].
