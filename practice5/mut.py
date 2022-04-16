@@ -5,10 +5,6 @@ You can add any function you want to test to the code. You'll need to pass the
 source and the testing functions as parameters: ``main(func, test)``.
 Example functions given are ``fact`` and ``test_fact``.
 
-NOTE: Sometimes the created mutants get into an infinite loop. I tried
-detecting that with multiprocessing, but that breaks the testing mechanism.
-I haven't found a solution to that yet.
-
 NOTE: This module was written from a code template by Peter Sovietov
 (check github.com/true-grue/kispython) as a university assignment, which I went
 a little overboard with.
@@ -20,8 +16,7 @@ import random
 from collections import defaultdict
 import inspect
 from ast import *
-# import multiprocessing
-# import time
+import multiprocessing as mp
 
 
 class Locator(NodeVisitor):
@@ -222,6 +217,26 @@ def make_mutants(func, size, max_changes):
     return mutants[1:]
 
 
+def mut_process(mutant, test):
+    """
+    Single mutant testing function that is meant to be run in a subprocess.
+
+    :param mutant: a mutant (mutated source code) to test
+    :param test: testing function with ``assert`` statements
+    """
+
+    # Mutants are mutated definitions of the source function
+    # So executing them redefines the function in the scope
+    exec(mutant, globals())
+
+    # Exceptions have to be caught inside the process
+    # Otherwise ``stderr`` will be filled with exceptions info
+    try:
+        test()
+    except:
+        exit(1)
+
+
 def mut_test(func, test, size=20, max_changes=3):
     """
     Main mutation testing function. 
@@ -234,19 +249,23 @@ def mut_test(func, test, size=20, max_changes=3):
     """
 
     # Making list of mutants
-    survived, killed = [], []
+    survived, killed, timedout = [], [], []
     mutants = make_mutants(func, size, max_changes)
 
     # Loop for testing each mutant
     for mutant in mutants:
-        try:
-            exec(mutant, globals())
-            test()
+        p = mp.Process(target=mut_process, args=(mutant, test))
+        p.start()
+        p.join(1)
+        if p.exitcode is None:
+            p.terminate()
+            p.join()
+            timedout.append(mutant)
+        elif p.exitcode == 0:
             survived.append(mutant)
-        except:
+        else:
             killed.append(mutant)
-            pass
-    return survived, killed
+    return survived, killed, timedout
 
 
 # Implementation of factorial function
@@ -299,34 +318,40 @@ def main(func, test, num=None, chs=None, filename='muttest.log'):
 
     # Running the test
     try:
-        survived, killed = mut_test(func, test, size=num, max_changes=chs)
+        surv, dead, timed = mut_test(func, test, size=num, max_changes=chs)
     except AssertionError:
         print('Failed to generate unique mutants')
         print('Try to lower the number of mutants')
         return
-    surv, dead = len(survived), len(killed)
 
     # Logging results
+    pools = [(surv, 'Survived'), (dead, 'Killed'), (timed, 'Timed out')]
     with open(filename, 'w') as f:
+        # Options and results summary
         f.write('--- Testing options ---\n')
-        f.write(f'Number of mutants: {num}\nMaximum changes: {chs}\n')
+        f.write(f'Number of mutants: {num}\n')
+        f.write(f'Maximum changes:   {chs}\n\n')
         f.write('--- Testing results ---\n')
-        f.write(f'Mutants survived: {surv}\nMutants died: {dead}\n')
-        if survived:
-            f.write('\n\nSurvived mutants:\n-----------------\n')
-        count = 1
-        for mutant in survived:
-            f.write(f'\n--- Survived mutant #{count} ---\n')
-            f.write(mutant + '\n')
-            count += 1
-        if killed:
-            f.write('\n\nKilled mutants:\n---------------\n')
-        count = 1
-        for mutant in killed:
-            f.write(f'\n--- Killed mutant #{count} ---\n')
-            f.write(mutant + '\n')
-            count += 1
-    print(f'Testing done. Survived: {surv}, killed: {dead}.')
+        f.write(f'Mutants survived:  {len(surv)}\n')
+        f.write(f'Mutants killed:    {len(dead)}\n')
+        f.write(f'Mutants timed out: {len(timed)}\n')
+
+        # Survived, killed and timed out mutant pools print
+        for pool, msg in pools:
+            if pool:
+                f.write(f'\n\n{msg} mutants:\n')
+                f.write(f'{"-" * (len(msg) + 9)}\n')
+            count = 1
+            for mutant in pool:
+                f.write(f'\n--- {msg} mutant #{count} ---\n')
+                f.write(f'{mutant}\n')
+                count += 1
+
+    # Terminal prints
+    print(f'Testing done.')
+    print(f'Survived:  {len(surv)}')
+    print(f'Killed:    {len(dead)}')
+    print(f'Timed out: {len(timed)}')
     print(f'See more info in {filename}')
 
 
