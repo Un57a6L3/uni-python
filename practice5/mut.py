@@ -1,13 +1,25 @@
+"""
+Mutation testing module.
+
+You can add any function you want to test to the code. You'll need to pass the
+source and the testing functions as parameters: ``main(func, test)``.
+Example functions given are ``fact`` and ``test_fact``.
+
+NOTE: Sometimes the created mutants get into an infinite loop. I tried
+detecting that with multiprocessing, but that breaks the testing mechanism.
+I haven't found a solution to that yet.
+
+NOTE: This module was written from a code template by Peter Sovietov
+(check github.com/true-grue/kispython) as a university assignment, which I went
+a little overboard with.
+
+Author: Arseny Antonov (github.com/Un57a6L3/uni-python).
+"""
+
 import random
 from collections import defaultdict
 import inspect
 from ast import *
-
-# Sometimes the created mutants get into an infinite loop.
-# I tried detecting that with multiprocessing,
-# But that breaks the testing mechanism.
-# I haven't found a solution to that yet.
-
 # import multiprocessing
 # import time
 
@@ -38,33 +50,46 @@ class Mutator(NodeTransformer):
     """
 
     # List of node classes with implemented mutations
-    implemented = [BinOp, UnaryOp, BoolOp, Compare]
+    implemented = [UnaryOp, BinOp, BoolOp, Compare]
 
     # These dictionaries describe the mutations that can occur in nodes
     # The keys are the existing operators
     # The values are lists of what operators they can mutate into
-    muts_BinOp = {
-        Add: [Sub],
-        Sub: [Add],
-        Mult: [Div, Pow],
-        Mod: [Div, FloorDiv]
-    }
     muts_UnaryOp = {
         UAdd: [USub],
         USub: [UAdd]
+    }
+    muts_BinOp = {
+        Add: [Sub, Mult],
+        Sub: [Add, Div],
+        Mult: [Add, Div, Pow],
+        Div: [Sub, Mult, FloorDiv, Mod],
+        Mod: [Sub, Mult, Div, FloorDiv],
+        Pow: [Mult],
+        LShift: [RShift],
+        RShift: [LShift],
+        BitOr: [BitXor, BitAnd],
+        BitXor: [BitOr, BitAnd],
+        BitAnd: [BitOr, BitXor]
     }
     muts_BoolOp = {
         And: [Or],
         Or: [And]
     }
     muts_Compare = {
+        Eq: [NotEq, Is],
+        NotEq: [Eq, IsNot],
+        Is: [IsNot, Eq],
+        IsNot: [Is, NotEq],
+        In: [NotIn],
+        NotIn: [In],
         Gt: [GtE, Lt, LtE],
         GtE: [Gt, Lt, LtE],
         Lt: [LtE, Gt, GtE],
         LtE: [Lt, Gt, GtE]
     }
 
-    def __init__(self, locs: defaultdict):
+    def __init__(self):
         self.target = None
 
     def set_target(self, locs: defaultdict):
@@ -117,18 +142,18 @@ class Mutator(NodeTransformer):
                 return getattr(self, f'mut_{x.__name__}')(node, new_op)
         raise Exception('Unimplemented node class')
 
+    def mut_UnaryOp(self, node, new_op):
+        """Mutation method for UnaryOp nodes."""
+        return copy_location(UnaryOp(
+            operand=node.operand,
+            op=new_op()
+        ), node)
+
     def mut_BinOp(self, node, new_op):
         """Mutation method for BinOp nodes."""
         return copy_location(BinOp(
             left=node.left,
             right=node.right,
-            op=new_op()
-        ), node)
-
-    def mut_UnaryOp(self, node, new_op):
-        """Mutation method for UnaryOp nodes."""
-        return copy_location(UnaryOp(
-            operand=node.operand,
             op=new_op()
         ), node)
 
@@ -163,7 +188,7 @@ def mutate_code(src, max_changes):
     loc.visit(tree)
 
     # loc.locs now contains a dictionary with all nodes
-    mut = Mutator(loc.locs)
+    mut = Mutator()
     for _ in range(random.randint(1, max_changes)):
         mut.set_target(loc.locs)
         tree = mut.visit(tree)
@@ -174,7 +199,7 @@ def make_mutants(func, size, max_changes):
     """
     Makes a list of mutants from given function.
 
-    :param func: function to mutate
+    :param func: source function to mutate
     :param size: number of mutants to make
     :param max_changes: maximum number of mutations allowed per mutant
     :returns: list of mutants
@@ -201,7 +226,7 @@ def mut_test(func, test, size=20, max_changes=3):
     """
     Main mutation testing function. 
 
-    :param func: function to test
+    :param func: source function to mutation test
     :param test: testing function with ``assert`` statements
     :param size: number of mutants to make and test
     :param max_changes: maximum number of mutations allowed per mutant
@@ -224,7 +249,9 @@ def mut_test(func, test, size=20, max_changes=3):
     return survived, killed
 
 
-# Function for testing
+# Implementation of factorial function
+# This function is an example of function to test
+# You can add other functions and test them as well
 def fact(n):
     result = 1
     positive = True
@@ -240,8 +267,10 @@ def fact(n):
     return result
 
 
-# Testing function
-def test():
+# Testing function for the ``fact`` function
+# This function is an example of a testing function
+# You can add other testing functions as well
+def test_fact():
     assert fact(7) == 5040
     assert fact(5) == 120
     assert fact(0) == 1
@@ -251,23 +280,26 @@ def test():
     assert fact(-4) == 24
 
 
-def main(user_input=False, filename='muttest.log'):
+def main(func, test, num=None, chs=None, filename='muttest.log'):
     """
     Driver function for mutation testing.
 
-    :param user_input: flags whether the user is asked to enter parameters
+    :param func: source function to mutation test
+    :param test: testing function with ``assert`` statements
+    :param num: number of mutants to make and test
+    :param chs: maximum number of mutations allowed per mutant
     :param filename: name of the log file with testing info and results
     """
 
     # Input of parameters
-    num, chs = 6, 2
-    if user_input:
+    if num is None:
         num = int(input('Enter number of mutants: '))
+    if chs is None:
         chs = int(input('Enter max number of changes: '))
 
     # Running the test
     try:
-        survived, killed = mut_test(fact, test, size=num, max_changes=chs)
+        survived, killed = mut_test(func, test, size=num, max_changes=chs)
     except AssertionError:
         print('Failed to generate unique mutants')
         print('Try to lower the number of mutants')
@@ -276,16 +308,20 @@ def main(user_input=False, filename='muttest.log'):
 
     # Logging results
     with open(filename, 'w') as f:
-        f.write('Survived mutants:\n')
-        f.write('None.\n' if survived == [] else '-----------------\n')
+        f.write('--- Testing options ---\n')
+        f.write(f'Number of mutants: {num}\nMaximum changes: {chs}\n')
+        f.write('--- Testing results ---\n')
+        f.write(f'Mutants survived: {surv}\nMutants died: {dead}\n')
+        if survived:
+            f.write('\n\nSurvived mutants:\n-----------------\n')
         count = 1
         for mutant in survived:
             f.write(f'\n--- Survived mutant #{count} ---\n')
             f.write(mutant + '\n')
             count += 1
+        if killed:
+            f.write('\n\nKilled mutants:\n---------------\n')
         count = 1
-        f.write('\n\nKilled mutants:\n')
-        f.write('None.\n' if killed == [] else '---------------\n')
         for mutant in killed:
             f.write(f'\n--- Killed mutant #{count} ---\n')
             f.write(mutant + '\n')
@@ -295,4 +331,4 @@ def main(user_input=False, filename='muttest.log'):
 
 
 if __name__ == '__main__':
-    main(user_input=True)
+    main(fact, test_fact, filename='muttest_fact.log')
