@@ -30,6 +30,9 @@ for i in range(3):
     res = ['much','code','wow'][i]
     # new ...05...10...15..19
     res = 'mcwuoocdwhe'[i::3]
+    # ^    m  u  c  h 
+    # ^     c  o  d  e
+    # ^      w  o  w  
 ```
 
 ## Task 3
