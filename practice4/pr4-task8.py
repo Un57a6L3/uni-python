@@ -99,9 +99,10 @@ def draw(pic):
             draw_rel(args, piccolor)
             continue
 
-
-pic = Path('practice4\data\PIC.1').read_bytes()
-canvas = tk.Canvas(width=160 * SCALE_X, height=170 * SCALE_Y)
-canvas.pack()
-draw(pic)
-tk.mainloop()
+picnums = [1, 2, 28, 44]
+for picnum in picnums:
+    pic = Path(f'practice4\data\PIC.{picnum}').read_bytes()
+    canvas = tk.Canvas(width=160 * SCALE_X, height=170 * SCALE_Y)
+    canvas.pack()
+    draw(pic)
+    tk.mainloop()
