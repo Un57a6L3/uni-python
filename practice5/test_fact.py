@@ -1,4 +1,4 @@
-import pytest
+# import pytest
 from fact import fact
 
 
