@@ -12,11 +12,11 @@ from matplotlib import colors
 from numpy import linspace, vstack
 
 
-def initplane(n, m, cx, cy, r, max_iter, prog=True):
+def initplane(n, cx, cy, r, max_iter, prog=True):
     """Function to calculate the plane."""
 
     # Initializing plane
-    plane = [[None] * m for _ in range(n)]
+    plane = [[None] * n for _ in range(n)]
 
     # Outer loop (rows): Print progress
     for i in range(n):
@@ -27,11 +27,11 @@ def initplane(n, m, cx, cy, r, max_iter, prog=True):
             sys.stdout.flush()
 
         # Inner loop (cols): Calculate pixel value
-        for j in range(m):
+        for j in range(n):
 
             # Scaling to be between -R and R
             zx = -r + i * (2 * r / n)
-            zy = -r + j * (2 * r / m)
+            zy = -r + j * (2 * r / n)
 
             # Calculating next value
             iter = 0
@@ -58,7 +58,7 @@ def add_black(colormap):
 
 def main():
     # Input values
-    n, m = list(map(int, input("Enter resolution (N, M): ").split()))
+    n = int(input("Enter resolution in pixels (default 2000): "))
     cx, cy = list(map(float, input("Enter C constant (cx, cy): ").split()))
     max_iter = int(input("Enter max iterations per pixel (default 100): "))
 
@@ -68,14 +68,14 @@ def main():
         radius += 0.1
 
     # Calculate plane
-    plane = initplane(n, m, cx, cy, radius, max_iter)
+    plane = initplane(n, cx, cy, radius, max_iter)
 
     # Plot plane and save image
     cmap = add_black(plt.cm.viridis)
     norm = plt.Normalize(vmin=0, vmax=max_iter)
     image = cmap(norm(plane))
-    name = f"julia_normal_{n}x{m}_c={cx}{'+' if cy > 0 else '-'}{abs(cy)}i"
-    plt.imsave(f"{name}.png", image)
+    name = f"julia_normal_{n}px_iters={max_iter}_c={cx}{'+' if cy > 0 else '-'}{abs(cy)}i"
+    plt.imsave(f"images/{name}.png", image)
 
 
 if __name__ == "__main__":
