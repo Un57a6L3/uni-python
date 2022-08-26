@@ -4,6 +4,7 @@ where `z` is a complex variable and `c` is a complex constant).
 """
 
 import sys
+import time
 from math import sqrt
 from random import random
 
@@ -12,36 +13,32 @@ from matplotlib import colors
 from numpy import linspace, vstack
 
 
-def initplane(n, cx, cy, r, max_iter, prog=True):
+def initplane(n, c, r, max_iter, prog=True):
     """Function to calculate the plane."""
 
     # Initializing plane
     plane = [[None] * n for _ in range(n)]
 
     # Outer loop (rows): Print progress
-    for i in range(n):
+    for y in range(n):
 
         # Printing calculation progress
         if prog:
-            sys.stdout.write(f"\rCalculating row {i + 1}/{n}")
+            sys.stdout.write(f"\rCalculating row {y + 1}/{n}")
             sys.stdout.flush()
 
         # Inner loop (cols): Calculate pixel value
-        for j in range(n):
+        for x in range(n):
 
             # Scaling to be between -R and R
-            zx = -r + i * (2 * r / n)
-            zy = -r + j * (2 * r / n)
+            z = (2 * r / n) * complex(x, y) - complex(r, r)
 
             # Calculating next value
             iter = 0
-            while zx ** 2 + zy ** 2 < r ** 2 and iter < max_iter:
-                xtemp = zx ** 2 - zy ** 2
-                zy = 2 * zx * zy + cy
-                zx = xtemp + cx
+            while abs(z) < r and iter < max_iter:
+                z = z ** 2 + c
                 iter += 1
-            plane[i][j] = iter
-
+            plane[y][x] = iter
     return plane
 
 
@@ -59,22 +56,26 @@ def add_black(colormap):
 def main():
     # Input values
     n = int(input("Enter resolution in pixels (default 2000): "))
-    cx, cy = list(map(float, input("Enter C constant (cx, cy): ").split()))
     max_iter = int(input("Enter max iterations per pixel (default 100): "))
+    cx, cy = list(map(float, input("Enter C constant (cx, cy): ").split()))
+    c = complex(cx, cy)
 
     # Radius must be such that r**2 - r >= sqrt(cx**2 + cy**2)
     radius = 0
-    while radius ** 2 - radius < sqrt(cx ** 2 + cy ** 2):
+    while radius ** 2 - radius < abs(c):
         radius += 0.1
 
     # Calculate plane
-    plane = initplane(n, cx, cy, radius, max_iter)
+    start = time.perf_counter()
+    plane = initplane(n, c, radius, max_iter)
+    end = time.perf_counter()
+    sys.stdout.write(f"\nTime to calculate plane: {end - start:.2f} seconds")
 
     # Plot plane and save image
     cmap = add_black(plt.cm.viridis)
     norm = plt.Normalize(vmin=0, vmax=max_iter)
     image = cmap(norm(plane))
-    name = f"julia_normal_{n}px_iters={max_iter}_c={cx}{'+' if cy > 0 else '-'}{abs(cy)}i"
+    name = f"julia_normal_{n}px_iters={max_iter}_c={str(c).strip('()')[:-1]}i"
     plt.imsave(f"images/{name}.png", image)
 
 
