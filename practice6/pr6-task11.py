@@ -9,12 +9,31 @@ from math import sqrt
 from random import random
 
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib import colors
-from numpy import linspace, vstack
+
+
+def initplane_np(n, c, r, max_iter, prog=True):
+    """Function to calculate the plane (using numpy)."""
+    # Initialize plane, iter count, function
+    plane_y, plane_x = np.mgrid[r:-r:n*1j, -r:r:n*1j]
+    plane = plane_x + plane_y * 1j
+    iters = np.full(plane.shape, 0)
+    f = lambda x: x ** 2 + c
+
+    # Single loop (iters)
+    for iter in range(max_iter):
+        if prog:
+            sys.stdout.write(f"\rIteration {iter + 1}/{max_iter}")
+            sys.stdout.flush()
+        mask = abs(plane) < r
+        plane[mask] = f(plane[mask])
+        iters[mask] += 1
+    return iters
 
 
 def initplane(n, c, r, max_iter, prog=True):
-    """Function to calculate the plane."""
+    """Function to calculate the plane (use numpy version instead)."""
 
     # Initializing plane
     plane = [[None] * n for _ in range(n)]
@@ -42,15 +61,15 @@ def initplane(n, c, r, max_iter, prog=True):
     return plane
 
 
-def add_black(colormap):
+def add_black(cmap):
     """Alters a colormap so that the highest value is black."""
 
-    black = plt.cm.binary(255)                # doesn't conflict with vstack
-    colormap = colormap(linspace(0, 1, 255))  # 255 for colormap, 1 for black
-    colormap = vstack((colormap, black))      # stack both together
+    black = plt.cm.binary(255)           # doesn't conflict with vstack
+    cmap = cmap(np.linspace(0, 1, 255))  # 255 for colormap, 1 for black
+    cmap = np.vstack((cmap, black))      # stack both together
 
     # Сast to MPL colormap type
-    return colors.LinearSegmentedColormap.from_list('my_colormap', colormap)
+    return colors.LinearSegmentedColormap.from_list('my_colormap', cmap)
 
 
 def main():
@@ -67,7 +86,7 @@ def main():
 
     # Calculate plane
     start = time.perf_counter()
-    plane = initplane(n, c, radius, max_iter)
+    plane = initplane_np(n, c, radius, max_iter)
     end = time.perf_counter()
     sys.stdout.write(f"\nTime to calculate plane: {end - start:.2f} seconds")
 
