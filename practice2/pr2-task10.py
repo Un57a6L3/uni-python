@@ -59,7 +59,7 @@ def parse_subj(text):
 
 
 def main():
-    text = input('Enter letter header: ')
+    text = input('Введите тему письма: ')
     result = parse_subj(text)
 
     if result[0] != '':

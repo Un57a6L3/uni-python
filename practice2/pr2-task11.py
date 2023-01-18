@@ -1,5 +1,5 @@
 from itertools import groupby
-EOL = chr(10017)
+EOL = chr(9830)
 
 # --- IMPORTANT: BWT Transform is not fully efficient ---
 # The end-of-line (EOL) symbol is supposed to be skipped in sorting, but not omitted
@@ -11,7 +11,7 @@ EOL = chr(10017)
 def rle_encode(data):
     data = data.replace(EOL, '')                             # removing EOL symbol from string
     output = [(k, len(list(g))) for k, g in groupby(data)]   # encoding: outputs list[tuple(str, int)]
-    return ''.join([x for x in str(output) if x.isalnum()])  # parsing the output into a string
+    return ''.join(f'{ch}{num}' for ch, num in output)       # parsing the output into a string
 
 
 # Burrows-Wheeler Transform (BWT)

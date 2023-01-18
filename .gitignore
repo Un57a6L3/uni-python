@@ -20,5 +20,6 @@ test.py
 # Filenames
 output.*
 gen_*.*
+julia*.*
 !example*.*
 !PIC.*.log

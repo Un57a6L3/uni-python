@@ -44,9 +44,12 @@ class MyDict:
             self.taken += 1
             return
 
-        # Collision: iterate bucket, put node at end
+        # Collision: iterate bucket, update existing node or put node at end
         prev = node
         while node is not None:
+            if node.key == key:
+                node.value = value
+                return
             prev = node
             node = node.next
         prev.next = Node(key, value)
