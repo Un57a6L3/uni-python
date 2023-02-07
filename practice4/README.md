@@ -169,7 +169,7 @@ Just take a look at the [code][t5] and you'll understand all that.
 ## Task 8 (Sierra AGI-graphics)
 
 > Background graphics in old Sierra games was represented as a sequence of commands.
-> The result looked similar to vector graphics. The original [King's Quest](kings-quest)
+> The result looked similar to vector graphics. The original [King's Quest][kings-quest]
 > game had a 160x200px resolution, but you can try redrawing them in high resolution.
 > There is a code template given.
 > 1. Implement command parsing from graphic files in `data/PIC.*`.
@@ -183,7 +183,7 @@ A detailed explanation would be very long and I'm too lazy to write it.
 I will give a short summary of what we need to do though.
 
 First, we need to parse commands (actions) and arguments from a `pic.X` binary file.
-The format and actions are described [here](pic-format).
+The format and actions are described [here][pic-format].
 
 Basically bytes with values >= `0xF0` are the actions,
 and all bytes between it and the next action are the arguments.
